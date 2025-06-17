@@ -33,5 +33,6 @@ def blog_npe_public():
 @app.route("/in-all-feels")
 def blog_iaf_public():
     return render_template("/blogs/in-all-feels.html")
+    
 if __name__ == '__main__':
     app.run(debug=True)
