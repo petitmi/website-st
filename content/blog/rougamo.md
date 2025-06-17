@@ -1,0 +1,9 @@
+---
+title: "夹了青椒的陕西肉夹馍 / Shaanxi Rougamo With Green Peppers"
+date: 2023-04-01
+---
+## 夹了青椒的陕西肉夹馍  
+## Shaanxi Rougamo With Green Peppers  
+### 2023-04-01
+
+| 老李从早上5点就开始忙活了<br>搅了搅刚炖上的腊汁肉<br>在烤炉上放上揉好的面<br>为了这个城市新移民的口味<br>他还切起了青椒<br><br>他听到两个中学生经过摊位说到：<br>“我最受不了肉夹馍里放青椒，<br>我去意大利旅游，<br>他们也受不了披萨上放菠萝”<br><br>他没吃过披萨，但很想试一试<br>对面就是一家披萨店<br>但他从未看过一眼价格<br>因为他知道这是“西餐”<br>都是糊弄人的哩<br><br>想起前两年还在中学附近卖菠萝<br>那时候的菠萝还是酸的<br>就像小时候的一种野果<br>爷爷干活儿回来就会给他们摘几颗<br><br>他想，如果自己是个意大利人<br>他一定把披萨店开到家附近<br>而且一定不会放菠萝<br>不管外国游客多喜欢吃<br>因为意大利人开店不是缺钱<br>是为了满足自己的兴趣爱好呢 | Ol'Li has been working since 5:00 am<br>Stirring the freshly simmered meat<br>Putting the kneaded dough on the grill<br>For the taste of the city's new immigrants<br>He also cut up green peppers<br><br>He heard two high school students pass by the stall and say:<br>I hate green peppers in the Rougamo.<br>I traveled to Italy,<br>where locals also hate pineapple on pizza either.<br><br>He had never had pizza, but he wanted to try it<br>There was a pizza place right across the street<br>But he never looked at the prices<br>Because he knew it was Western food<br>It's all a scam<br><br>Two years ago, he was selling pineapples near the high school<br>The pineapple was sour when he was a kid<br>It tastes like the wild fruit picked by Grandpa<br>every time when he came back from labour<br><br>He thought, if he were an Italian<br>He would have opened a pizzeria near his home<br>And he would never put pineapple in it<br>No matter how much foreign tourists like to eat<br>Because Italians don't open stores for lack of money<br>It is to meet their own hobby it<br><br> |
