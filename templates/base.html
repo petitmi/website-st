@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XMMZ</title>
+    <link rel="stylesheet" href="/static/modern-normalize.css">
+<!-- Standard Favicon (for most browsers) -->
+<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/icon/favicon.ico') }}">
+
+<!-- PNG Favicons (for browsers that prefer PNG) -->
+<link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='img/icon/favicon-32x32.png') }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='img/icon/favicon-16x16.png') }}">
+
+<!-- Apple Touch Icon (for iOS home screen shortcut) -->
+<link rel="apple-touch-icon" href="{{ url_for('static', filename='img/icon/apple-touch-icon.png') }}">
+
+<!-- Android Chrome Icons (for mobile devices) -->
+<link rel="icon" type="image/png" sizes="192x192" href="{{ url_for('static', filename='img/icon/android-chrome-192x192.png') }}">
+<link rel="icon" type="image/png" sizes="512x512" href="{{ url_for('static', filename='img/icon/android-chrome-512x512.png') }}">
+
+</head>
+<body class="bg-beige">
+<main class="max-w-prose mx-auto">
+      
+
+<header class="header w-100 top-0 mb-2">
+    <div class="container relative w-100 text-2xl">
+    <input class="menu-btn none" type="checkbox" id="menu-btn" />
+    <label class="menu-icon none text-white bg-black rounded font-menu antialiased p-1 no-underline outlined active:bg-accent active:outline-accent" for="menu-btn"><span>Menu</span></label>
+    <nav class="nav w-100" aria-label="Primary Menu">
+        <pre class="leading-normal"><ul class="menu w-100 gap-4 list-none"><a class="hover-ornament active" href="/" rel="home" title="MENU">苊 dě 菜 僤 | MENU</a><li>├── <a 
+            class="hover-ornament " href="/" aria-label="About">関於 | About</a></li><li>├── <a 
+            class="hover-ornament" href="#" aria-label="Projects">項苜 | Projects</a><ul class="nav-item-sub"></ul></li><li>├── <a 
+            class="hover-ornament "href="#" aria-label="Blogs">博客 | Blogs</a><li>├── <a 
+            class="hover-ornament "href="#" aria-label="Music">喑楽 | Music</a></li></ul></pre>
+    </nav>
+    </div>
+</header>
+
+<div class="container">
+{% block container %} 
+{% endblock %}
+</div>
+
+
+</main>
+</body>
+</html>

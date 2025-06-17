@@ -1,0 +1,222 @@
+
+{% extends 'base.html' %}
+{%block container%}
+
+<h1 class="font-display text-sm">xmmz</h1>
+<h2 class="font-display text-2xl mt-0">AB Testing Summary</h2>
+<h3 class="font-display text-align">October, 2020</h3>
+<p>The A/B testing is a randomized test that compares two different things (i.e., A and B) hypothetically. The test utilizes statistical hypothesis testing.
+    An A/B testing can be used to test the difference between two different versions of a variable, usually by having A and B differ only in the target variable in an experiment, and then testing the difference between the responses of the two groups in the results as to which is better.</p>
+    <ul>
+    <li>Arises in the field of agriculture: which way is better for a certain crop.</li>
+    <li>In medicine: whether a new drug is effective.</li>
+    <li>In law: the presumption of innocence.</li>
+    <li>In politics: Obama&#39;s presidential campaign, gaining online traction by using A/B tests to find out what voters want to see from presidential candidates.</li>
+    <li>Web online data testing: which algorithms, designs, and features users prefer.</li>
+    </ul>
+    <h2 id="questions">Questions</h2>
+    <p>Which of the following scenarios are applicable for A/B test?</p>
+    <ul>
+    <li>Test whether the products in our marketplace are rich enough.</li>
+    <li>Test whether value-added services should be launched.</li>
+    <li>Test the effect of the new recommendation sorting algorithm.</li>
+    <li>Test the impact on users of changes in page loading speed and display results due to changes in infrastructure.</li>
+    <li>Test whether an optimization can increase the repurchase rate of users for a paid product.</li>
+    <li>Test the impact of changing the main logo of the product on users.</li>
+    <li>Examine the impact of latency on the homepage.</li>
+    </ul>
+    <blockquote>
+    <p>Answers will be provided in the end.</p>
+    </blockquote>
+    <h2 id="procedure">Procedure</h2>
+    <ul>
+    <li>Setting experimental objectives and establishing hypotheses;</li>
+    <li>Determine the distribution model, parameters (statistics, significance, statistical power, sample size);</li>
+    <li>Determining the experimental protocol: experimental group &amp; control group; flow distribution model;</li>
+    <li>A/A &amp; A/B testing;</li>
+    <li>Evaluation of experimental effects: judgment of experimental validity; comparison of experimental results;</li>
+    </ul>
+    <h2 id="statistical-theory">Statistical Theory</h2>
+    <h3 id="probability-distribution">Probability Distribution</h3>
+    <ul>
+    <li>Bernoulli distribution: whether a given user clicks on a button when browsing a web page.</li>
+    <li>Binomial distribution: the distribution of the number of n users who click on a button when browsing a web page.</li>
+    <li>Poisson distribution: (small probability event) the distribution of the number of users clicking a button within 1 second. (Many applications: number of car accidents at an intersection per unit of time, number of mutations in DNA, number of radioactive nuclei decaying ......)</li>
+    <li>Normal distribution:The distribution of the number of people who click on a button when a large number of users are browsing a web page.</li>
+    </ul>
+    <p><style>
+    table, tr, td, th{
+    padding: 10px;
+    margin: auto;
+    border: none; 
+    text-align: center;
+    }
+    </style></p>
+    <table>
+    <!-- border-collapse="collapse" -->
+      <tr >
+        <td><img src="binomial.png"  width=100% /> </td>
+        <td><img src="poisson.png" /></td>
+        <td><img src="normal.png" /></td>
+      </tr>
+      <tr>
+        <td>Binomial Distribution</td>
+        <td>Poisson Distribution</td>
+        <td>Normal Distribution</td>
+      </tr>
+    </table>
+    
+    <h3 id="hypothesis-testing">Hypothesis Testing</h3>
+    <p>Hypothesis testing is a method of statistical inference, in which hypotheses are tested by modeling the observation of random variables to obtain estimates of unknown parameters.</p>
+    <ul>
+    <li><strong>Lady Tasting Tea Case</strong>
+    A female colleague of Fisher, a statistician, claimed to be able to tell whether tea or milk was added first to a milk tea. Fisher decides to determine whether the lady&#39;s claim is true or false through a scientific experiment.
+    He was faced with these questions:</li>
+    <li>how many cups of tea (sample size) should be served to the lady?</li>
+    <li>In what order should these teas be served (randomness)?</li>
+    <li>how much information should the lady be told about the order in which the cups of tea should be served (a priori knowledge)?
+    ......
+    Eventually Fisher proposes to give her 8 cups of milk tea. The lady knows that 4 of the cups will be served with tea first and 4 with milk first, but in a randomized order, the lady has to choose the 4 cups that are &quot;milk first and tea second&quot;.</li>
+    </ul>
+    <p>The test statistic is the number of confirmations that are correct. The null hypothesis H0 is that the lady is unable to determine whether tea or milk is added first to the milk tea. The alternative hypothesis H1 is that the lady is incapable of doing so. The distribution of the tea tasting experiment for ladies is a hypergeometric distribution.
+    So how many cups does the lady answer correctly before we can reject the null hypothesis, which is to prove that the lady has the ability to judge milk tea?</p>
+    <ul>
+    <li><strong>How to avoid misjudging the results of an experiment?</strong>
+    As an experiment, it is possible to get wrong feedback results. But we can control the probability of error based on the distribution.<table>
+    <tr>
+    <th>Decision</th><th>H0 is True</th><th>H0 is False</th>
+    </tr>
+    <tr>
+    <td>Reject H0</td><td>Type I error (probability α)</td><td>H0 is False</td>
+    </tr>
+    <tr>
+    <td>Accept H0</td><td>Right</td><td>Type II error (probability α)</td>
+    </tr>
+    </table>
+    
+    
+    </li>
+    </ul>
+    <p>In the case of the &quot;lady tasting tea&quot;, the Type I error is that the lady actually has the ability to discriminate, while the experiment results judge that she cannot, and Type II is the opposite. The test for Type I errors is called a significance test. （The significance level is (1- α).
+    In a typical experiment, α is set at 5% and β at 20%. It represents the psychology of &quot;it is better to miss four than to let one go&quot; - in product feature experiments, <strong>it represents that people would rather miss 4 good features than to let 1 bad feature go online</strong>.</p>
+    <ul>
+    <li>How many cups can a lady answer correctly to reject the original hypothesis?
+    As shown in the following probability histogram, the probability of a lady getting 3 cups right in a randomized situation is 2.29%, and the probability of getting 4 cups right is 1.43%. Therefore, as long as the lady chooses more than 2 cups correctly, it can be assumed with 95% confidence that the lady is capable of judging the order in which milk tea is added to milk and tea.
+    <img src="histogram.png" alt="Histogram"></li>
+    </ul>
+    <h2 id="example-ab-testing-for-changing-the-color-of-a-button">Example - AB testing for changing the color of a button</h2>
+    <ul>
+    <li><strong>Setting Experiment Goals and Formulating Hypotheses**</strong></li>
+    </ul>
+    <p>The original button color is blue, and we want to investigate how changing the button color to green affects user click-through rates.</p>
+    <p>Null Hypothesis (H0): Changing the button color from blue to green has no effect on user click-through rates.
+    Alternative Hypothesis (H1): Changing the button color to green, as compared to blue, positively impacts user click-through rates.</p>
+    <p><img src="button.png" alt="Button ABtesting"></p>
+    <ul>
+    <li><strong>Determining the Model</strong></li>
+    </ul>
+    <p>Whether each user clicks the button while browsing the webpage follows a Bernoulli distribution. The question of whether a certain number of users click while browsing the webpage follows a Binomial distribution.</p>
+    <p>Due to the substantial daily active users (DAU) on the webpage, the distribution of users clicking the button when browsing the webpage follows a Normal distribution.</p>
+    <p>Therefore, we will use an independent two-sample proportion test. In cases with large samples, the sampling distribution of the difference between p1 and p2 is approximately normal. Hence, we can choose the z-value as the test statistic.</p>
+    <ul>
+    <li><strong>Sample Size &amp; Parameter Assessment</strong></li>
+    </ul>
+    <p>When the button is blue, the average daily click-through rate for users is 2%. Now, the desired increase in click-through rate with the color change to green is 20%, aiming for 2.4%.</p>
+    <p>With a significance level (α) of 5% and statistical power (1-β) at 80%, how many samples are needed?</p>
+    <p>Answer: 19,784</p>
+    <p>You can perform the calculation online using this tool: <a href="https://www.evanmiller.org/ab-testing/sample-size.html">Sample Size Calculator</a></p>
+    <ul>
+    <li><p><strong>Determining the Experimental Plan: Experimental Group &amp; Control Group; Traffic Allocation Model</strong></p>
+    </li>
+    <li><p>Considering the current DAU on the webpage is 50,000, and we need to reach 19,784 for the experiment. We also want to ensure that the experiment doesn&#39;t disrupt the majority of current users&#39; experience.</p>
+    </li>
+    <li><p>Therefore, we will randomly assign 90% of the users as the control group (Group A) and 10% of the users as the experimental group (Group B) daily.</p>
+    </li>
+    <li><p>Calculations indicate that the required sample size can be achieved in just 4 days.</p>
+    </li>
+    </ul>
+    <p>Experimental Plan:</p>
+    <ul>
+    <li>Group A: Randomly select 90% of daily active users.</li>
+    <li>Group B: Randomly select 10% of daily active users.</li>
+    <li>Duration of Experiment: 4 days.</li>
+    <li>Expected Sample Size: 20,000 users.</li>
+    </ul>
+    <table>
+    <tr>
+    <th>Group A</th><th>Group B</th>
+    </tr>
+    <tr>
+    <td><strong>Experimental group:</strong> 90% of daily active users</td><td><strong>Control group:</strong> 10% of daily active users</td>
+    </tr>
+    </table>
+    
+    <ul>
+    <li><strong>Quantities Summary</strong>
+    Assuming</li>
+    </ul>
+    <p>{{&lt; katex &gt;}}\(\text{H0: }\bar{x_1} = \bar{x_2}\)</p>
+    <p>{{&lt; katex &gt;}}\(\text{H1: }\bar{x_1} &gt; \bar{x_2}\)</p>
+    <p> {{&lt; katex &gt;}}\(\text{Test Statistic z: }\frac{\bar{x1}-\bar{x2}-\mu_0}{{s_1}^2/n1+{s_2}^2/n_2}\).</p>
+    <p>Sample Size for Group A (n1): 178,056
+    Sample Size for Group B (n2): 19,784
+    Standard deviation (s) and mean (x) are calculated from actual data.</p>
+    <p>Parameters:
+    Significance Level: 5%
+    Statistical Power: 80%</p>
+    <ul>
+    <li><p><strong>Evaluation of Experimental Results</strong></p>
+    </li>
+    <li><p>Whether there is a change in click-through rate at a significance level of 95%.</p>
+    </li>
+    <li>Assessment of the effective sample size and identification of outliers.</li>
+    <li>Detailed segmentation: Analyze which user profiles or user segments experience a more significant increase in clicks and which experience less.</li>
+    <li>Consideration of other relevant metrics: Variance, subsequent user behavior, etc.</li>
+    </ul>
+    <h2 id="pitfalls">Pitfalls</h2>
+    <ul>
+    <li><p><strong>Experimental Design</strong></p>
+    </li>
+    <li><p>Disregard confidence levels.</p>
+    </li>
+    <li>Significance in A/B/n testing.</li>
+    <li>One or multiple metrics.</li>
+    <li><p>Statistical power consists of two components: sample size and the magnitude of the expected conversion rate.</p>
+    </li>
+    <li><p><strong>During the Experiment</strong></p>
+    </li>
+    <li><p>Avoid peeking at the experiment: Checking results multiple times can increase errors.</p>
+    </li>
+    <li>Avoid ending the experiment prematurely: the novelty effect and the &quot;regression to the mean&quot; phenomenon.</li>
+    <li><p>Changing traffic allocation: if changes are necessary, the experiment should be restarted.</p>
+    </li>
+    <li><p><strong>Statistical Testing</strong></p>
+    </li>
+    <li><p>Assess the impact on other metrics: Click-through rate and conversion rate.</p>
+    </li>
+    <li>User segmentation: However, be cautious as segmentation can increase errors.</li>
+    <li>Inference from results: Short-term and long-term effects, causation and correlation, interval estimation.</li>
+    </ul>
+    <h2 id="answers">Answers</h2>
+    <p>Which of the following scenarios are applicable for A/B test?</p>
+    <ul>
+    <li>Test whether the products in our marketplace are rich enough. (❌ Not suitable. Even if a product is tested upon launch, it cannot determine if users are missing other products. Suggested approach: User surveys.)</li>
+    <li>Test whether value-added services should be launched. (❌ Not suitable. Users need to actively choose value-added services, so randomly assigning users for testing is not reasonable, as there is no control group. Suggested approach: Assess user interest in value-added services—percentage of users opting for them.)</li>
+    <li>Test the effect of the new recommendation sorting algorithm. (✅ Suitable. Comparing the new and old algorithms can be done using user click-through rates. Amazon tested personalized product recommendations and found an increase in sales.)</li>
+    <li>Test the impact on users of changes in page loading speed and display results due to changes in infrastructure.  (✅ Suitable. If computational resources are sufficient, both can run simultaneously.)</li>
+    <li>Test whether an optimization can increase the repurchase rate of users for a paid product. (❌ Not suitable. The duration is too long, spanning a year, resulting in limited data.)</li>
+    <li>Test the impact of changing the main logo of the product on users. (❌ Not suitable. Changing a company&#39;s logo can emotionally affect users, and they may need time to adapt to the new logo. Short-term AB data is insufficient.)</li>
+    <li>Examine the impact of latency on the homepage.  (✅ Suitable. Both Google and Amazon have demonstrated the effects of a 100-millisecond delay on users and sales through A/B testing.)</li>
+    </ul>
+    <h2 id="references">References</h2>
+    <ul>
+    <li><a href="http://elem.com/~btilly/ab-testing-multiple-looks/part1-rigorous.html">http://elem.com/~btilly/ab-testing-multiple-looks/part1-rigorous.html</a></li>
+    <li>&quot;How 20th Century Statistics Revolutionized Science: Lady Tasting Tea&quot; by Salsburg
+     (《20世纪统计怎样变革了科学:女士品茶》—— 萨尔斯伯格)</li>
+    <li>Udacity - AB Test
+     (Udacity-AB 测试)</li>
+    <li>&quot;Probability Theory and Mathematical Statistics&quot; by Chen Xiru
+     (《概率论与数理统计》—— 陈希孺)</li>
+    <li>[<a href="https://cxl.com/blog/testing-statist">https://cxl.com/blog/testing-statist</a></li>
+    </ul>
+    {%endblock%}

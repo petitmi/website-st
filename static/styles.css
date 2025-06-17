@@ -1,0 +1,84 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-top: 20px;
+}
+
+header .logo img {
+    max-width: 150px;
+}
+
+/* Catalog (Table of Contents) */
+nav.catalog {
+    margin-top: 20px;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+}
+
+nav.catalog ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+nav.catalog li {
+    margin: 10px 0;
+}
+
+nav.catalog a {
+    color: white;
+    text-decoration: none;
+}
+
+nav.catalog a:hover {
+    text-decoration: underline;
+}
+
+nav.catalog ul ul {
+    padding-left: 20px;
+}
+
+/* Event Details */
+#event-details {
+    background-color: white;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+#event-details h2 {
+    color: #333;
+}
+
+#event-details p {
+    color: #555;
+}
+
+/* Creative ASCII Text */
+#creative-text {
+    text-align: center;
+    margin-top: 20px;
+    font-family: "Courier New", Courier, monospace;
+    white-space: pre-wrap;
+}
+
+/* Body Content */
+#body-content {
+    padding: 20px;
+    background-color: white;
+    margin-top: 30px;
+}
+
+#body-content p {
+    color: #333;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}

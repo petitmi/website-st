@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{%block container%}
+<style>
+    .line {
+      width: 100%;
+      border-bottom: 1px dashed black;
+      height: 20px;
+    }
+  </style>
+  
+    <header>
+      <h1 class="font-display text-sm">xmmz</h1>
+      <h2 class="font-display text-4xl mt-0">About Me</h2>
+      <!-- <h3 class="font-display text-2xl">March, 2025</h3> -->
+    </header>
+<div class="max-w-prose">
+<p>Hi, my name is <strong>Yuchen Zhang</strong>. I work in data, with a Bachelor’s in Statistics and a Master’s in Data Science.</p>
+
+<p>I also release music as <strong>xmmz</strong>. Feel free to check out my tracks, I’d seriously appreciate any feedback (honestly, I might be kinda desperate ;;;).</p>
+<a href="https://linktr.ee/xmmz" target="_blank" rel="noopener noreferrer">
+  <img src="{{ url_for('static', filename='img/index/xmmz.png') }}" style="height:200px"/>
+</a>
+
+<p>I’m based in Vancouver and speak both Mandarin and English. 
+  I enjoy the simplicity and beauty of math and philosophy, and feel coding is like stress-reieving therapy. 
+  My creativity goes into songwriting and music production, sometimes jokes and standup comedy. 
+  These days I play tennis often but table tennis is my often-missed first love.</p>
+
+<p>This site is where I’ll be sharing my data projects, music, and performances.</p>
+
+
+<p><a href="https://www.linkedin.com/in/yuchen-nyx-zhang/">LinkedIn</a></p>
+<p><a href="https://open.spotify.com/artist/2KSLzywG3mq1vxbO37yoO3?si=YKq3NlM0ROa21VcaxXlMWQ">Spotify</a></p>
+<p><a href="https://music.apple.com/us/artist/xmmz/1761669624">Apple Music</a></p>
+<p>我叫张雨晨，数据行业，也发布了一些歌，可以通过xmmz搜到我。我住在温哥华，可以说中英文。我喜欢数学和哲学的概念、编程的解压。自己的创造力基本注入在歌里，还有一些笑话上。近期打网球比较多，但还是念念不忘乒乓球。</p>
+
+<!-- <p>Check out the links about me: [Blogs](https://petitmi.com/bread) | [Medium](https://medium.com/@petitmi001) | [Linkedin](https://www.linkedin.com/in/yuchen-nyx-zhang/) | [Youtube](https://www.youtube.com/channel/UC6YTScw2p9u6AHp-tgXDIrA)</p> -->
+<script>
+  for (let i = 0; i < 12; i++) {
+    document.write('<div class="line"></div>');
+  }
+</script>
+<div class="relative flexible flex space-x-2  max-w-prose overflow-hidden">
+  <pre role="img" class="font-display-mono aliased text-10">
+         />    <\
+        //      \\
+  <\   \\  __   //   />
+    \\___\\(oo)//___//
+     `---.X{II}X.---'
+  ______//=/\/\=\\_____
+  `-----/| =  = |\-----'
+       //\ =\/= /\\
+      ((  `-..-'  ))
+       \)        (/  hjw
+  </pre>
+  <pre role="img" class="font-display-mono aliased text-10">
+        />    <\
+       //      \\
+  <\   \\  __  //   />
+   \\___\\(oo)//___//
+    `---.X{II}X.---'
+  ______//=/\/\=\\_____
+  `-----/| =  = |\-----'
+      //\ =\/= /\\
+     ((  `-..-'  ))
+      \)        (/  hjw
+  </pre>
+  <pre role="img" class="font-display-mono aliased text-10">
+        />    <\
+       //      \\
+  <\   \\  __  //   />
+   \\___\\(oo)//___//
+    `---.X{II}X.---'
+  ______//=/\/\=\\_____
+  `-----/| =  = |\-----'
+      //\ =\/= /\\
+     ((  `-..-'  ))
+      \)        (/  hjw
+  </pre>
+  </div>
+  <script>
+    for (let i = 0; i < 12; i++) {
+      document.write('<div class="line"></div>');
+    }
+  </script>
+<img src="{{ url_for('static', filename='img/index/rain.JPG') }}" style="height:400px"/>
+<img src="{{ url_for('static', filename='img/index/chefmouse.JPG') }}" style="height:400px"/>
+<!-- <img src="{{ url_for('static', filename='img/index/mask.JPG') }}" style="height:400px"/> -->
+
+
+{%endblock%}

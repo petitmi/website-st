@@ -1,0 +1,25 @@
+
+{% extends 'base.html' %}
+{%block container%}
+
+<h1 class="font-display text-sm">xmmz</h1>
+<h2 class="font-display text-2xl mt-0">How Does a Large-scale Data Product Work?</h2>
+<h3 class="font-display text-align">September, 2023</h3>
+
+<h2 id="how-data-flows">How Data Flows</h2>
+<p>I was born when a fragment of <strong>logging</strong> code detected someone&#39;s click on an article, user&#39;s phone was my birthplace. I have timestamp, article ID, user ID, cookies and so many other organs that make up of me. </p>
+<p>It&#39;s me - a piece of data, growing within the <strong>data flow</strong>. </p>
+<p>After my birth, I transitioned to a <strong>remote server</strong>, moving from a <strong>database</strong> to a <strong>data warehouse</strong>. Then I participated in various <strong>analyzes</strong>, with plenty of activities of being extracted and transformed. Finally, the legacy of my community (and of course myself) contributed to an <strong>online recommendation product</strong> running in production, which operates on terminal phones. The product then facilitated the birth of more data pieces like me.</p>
+<p>My community is diverse, comprising <strong>structured data</strong> that can be easily stored in tables, <strong>unstructured data</strong> such as audio and text documents, and even <strong>semi-structured data</strong> that combines elements of both, like email.</p>
+<h2 id="delivery">Delivery</h2>
+<p>The data product can be an <strong>analysis report, a visualization dashboard, or an automatic data model running in production</strong>, depending on different business objectives and phases. However, regardless of the type of data product, substantial data analysis is required. Various methods, such as exploratory data analysis, machine learning, and deep learning, are typically applied and often combined to obtain results.</p>
+<h2 id="data-preperation">Data Preperation</h2>
+<p>The tasks here primarily involve <strong>data cleaning, wrangling, and transformation</strong>, rendering the data in a format suitable for mathematical and computational operations. Illustrating this process with the early-stage Natural Language Processing (NLP), words are indexed based on their occurrence in the corpus, typically organized into &#39;bags of words&#39;.</p>
+<h2 id="data-storage">Data Storage</h2>
+<p>We store various types of data in different formats and locations to serve different purposes. Massive computations occur during the early hours on mountains of high-volume remote servers. A 1TB hard drive can accommodate up to 200 billion words, while large internet companies often need to process PBs (1PB = 1024TB) of data per day. Therefore robust data processing streams and data warehousing stacks are needed.</p>
+<p><strong>Data warehouses</strong> typically consist of three layers: the operational data store (ODS), common data model (CDM), and application data service (ADS). The ODS primarily stores raw or lightly structured data such as detailed conditions for every user click. The CDM contains highly detailed factual data such as the details of every ordering process, public summary data such as per clicks of per users per day, and dimension data such as user labels. Data in the ADS layer is intended for direct use, such as metrics displayed on data dashboards.</p>
+<p>Various data infrastructure may feature tailored layers, but they typically share similar concepts. </p>
+<h2 id="data-collection">Data Collection</h2>
+<p>If we don&#39;t record the data, we won&#39;t have it. It might sound trivial, but it&#39;s a fundamental truth. It frequently occurs that we need to analyze something, only to discover suddenly that we lack even the raw data. For example, let&#39;s say we notice a decline in active users on our video channels and wish to uncover the reasons. We aim to examine the average total watch time for each user and delve into various categories. However, we overlooked collecting data on user activities during their video watching sessions, as well as the time and positions where they exit the videos. If we fail to do well in the analysis of user behaviors, not to mention to build personalized video recommendations for them.</p>
+<p>Data logging is typically the responsibility of front-end and back-end engineers, but data scientists must clearly define the timing and format for <strong>tracking events</strong>. This also requires a scalable and long-term vision for the data products.</p>
+{%endblock%}
