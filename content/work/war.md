@@ -41,7 +41,7 @@ I scraped the war list from the Wikipedia webpage I linked above, and got the na
 How to evaluate the severity of a war — can I use the death toll directly? I believe it’s not enough, please look at the figure that shows the population is exponentially increasing, which is an influential variable that needs to be taken into consideration. The death toll of 80 million during WWII, considering a population of 2.4 billion, may not be perceived as equally severe as the same number of deaths in a population of 8 billion today.
 
 
-<img src="/static/work/war/discrepancy.png"/>
+<img src="/static/img/work/war/discrepancy.png"/>
 
 ---
 
@@ -56,7 +56,7 @@ And **Dungan Revolt**, also one of the Chinese civil wars, surpassed World War I
 
 While looking at the death toll and duration distribution of closed wars, I noted that the death toll distribution is highly skewed, signifying that the majority of wars entail smaller casualties, with only a few experiencing exceptionally high death tolls. In contrast, the duration distribution appears more normal. It is important to categorize wars for the following analysis.
 
-<img src="/static/work/war/long-tailed.png"/>
+<img src="/static/img/work/war/long-tailed.png"/>
 
 ---
 
@@ -87,7 +87,7 @@ In conjunction with my analytical expectations, I characterize a **Bloody War** 
 
 Let’s have a look at whether the four kinds of wars have different occurrence distributions.
 
-<img src="/static/work/war/cluster-category.png"/>
+<img src="/static/img/work/war/cluster-category.png"/>
 
 
 From the graph, the **extreme and severe wars only happened before 1945**, which was the end of WWII. The 2 extreme wars are:
@@ -122,7 +122,7 @@ For extreme and severe wars, I will employ the **Bernoulli distribution** to cal
 `(1–9/145)^100`
 
 Here is the likelihood curve over year.
-<img src="/static/work/war/likelihood-bernoulli.png"/>
+<img src="/static/img/work/war/likelihood-bernoulli.png"/>
 
 * The probability of maintaining peace until 2023 after 1945 is **0.79%**
 * Extending this to the year 2050 reduces the probability further to **0.15%**
@@ -132,7 +132,7 @@ In this theoretical model, it’s surprising to realize that the long-term peace
 
 **Great powers** (United States, China, United Kingdom, France, Russia, Germany, Japan, India, Brazil, and Italy) play the conclusive role in influential wars as they have relatively larger populations and are more economically and politically important. However, due to the nuclear, great powers dare not to play too aggressively, and global trade makes them more dependent on the world economy. One of the great powers, Russia, has launched an invasion. While this may not be directed at another great power, it still does not bode well. In addition, the surge in conflicts after 1989 is also a cause for concern.
 
-<img src="/static/work/war/likelihood-poisson.png"/>
+<img src="/static/img/work/war/likelihood-poisson.png"/>
 
 
 Based on the **Poisson distribution**, representing the number of war occurrences in a given period, the likelihood that we witness over 3 conflicts per year is calculated to be **62.74%**.
@@ -153,7 +153,7 @@ This article only uses at-hand data with a few features. To make the inference m
 The chart below illustrates the trajectory of wars using the **‘Militarized Interstate Dispute’** dataset. The left side displays the original trends, while the right side depicts trends calculated with counts divided by the number of neighboring countries. This process aims to mitigate the influence of the growing number of countries. On the right chart, a relatively straight trend with a slight slope is observed.
 (*Source: Braumoeller, B. F. (2019). Over the Dead. Publisher.*)
 
-<img src="/static/work/war/MIDs.png"/>
+<img src="/static/img/work/war/MIDs.png"/>
 
 
 In addition, the analysis of great powers can be employed economically and politically. Here are some metrics:

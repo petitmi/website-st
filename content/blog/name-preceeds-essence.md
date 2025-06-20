@@ -21,10 +21,10 @@ table, tr, td, th {
 <table>
   <tr>
     <td>
-      <img src="/static/blog/name-preceeds-essence/ScottishFold.jpg" alt="折耳奥利奥" style="max-width:100%; height:auto;">
+      <img src="/static/img/blog/name-preceeds-essence/ScottishFold.jpg" alt="折耳奥利奥" style="max-width:100%; height:auto;">
     </td>
     <td>
-      <img src="/static/blog/name-preceeds-essence/AmericanShorthair.jpg" alt="美短奥利奥" style="max-width:100%; height:auto;">
+      <img src="/static/img/blog/name-preceeds-essence/AmericanShorthair.jpg" alt="美短奥利奥" style="max-width:100%; height:auto;">
     </td>
   </tr>
   <tr>
@@ -44,7 +44,7 @@ table, tr, td, th {
 
 小狗的名字是张猪，他是我爷爷那一年3月从马路边捡回来的一直中华田园小黑狗，5月爷爷就去世了。我想让小狗有一种成为我家一份子的感觉，所以他有和我们一样的姓。叫猪则是那种美好祝愿，觉得猪猪很可爱，天天在吃吃喝喝，躺着晒太阳那种无忧无虑的生活。张猪不是绝顶聪明的狗狗，所以永远也没学会在固定地方便便。他喜欢出去玩，也喜欢我。他看我的眼神永远是亲切热烈的，而且我吃什么他就也吃什么，但相同的东西我如果没吃他也不屑一顾。我那段时间喜欢吃榴莲，所以他也超爱，吃到自己有点便秘。不过这种杂食也让他营养很好，毛色发亮，很多人以为他是边牧。
 
-![张猪](/static/blog/name-preceeds-essence/ZhuZhang.jpg)
+![张猪](/static/img/blog/name-preceeds-essence/ZhuZhang.jpg)
 
 对于小猫小狗来说，ta们可能发现主人用特定音调发出特定声音的时候，就是在望着ta们，所以知道了这个是叫ta们的意思。但是小动物没有自我意识，所以可能不知道这个词儿是代表ta们。
 

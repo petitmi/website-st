@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{%block container%}
+<h2 class="font-display text-4xl mt-0">相册 ｜ Gallery</h2>
+
+{% if galleries %}
+<div class="gallery-grid">
+    {% for gallery in galleries %}
+        <a href="{{ url_for('gallery_detail', slug=gallery.slug) }}" class="gallery-card">
+            <div class="gallery-info">
+                <h3 class="gallery-title">{{ gallery.title }} --- {{ gallery.date|dateformat }}</h3>
+            </div>
+        </a>
+    {% endfor %}
+</div>
+{% else %}
+<div class="empty-state">
+    <h2>No galleries found</h2>
+    <p>Create your first gallery by adding a folder to <code>/static/img/gallery/</code></p>
+    <a href="{{ url_for('index') }}" class="nav-link">← Back to Home</a>
+</div>
+{% endif %}
+{%endblock%}

@@ -50,9 +50,9 @@ text-align: center;
 <table>
 <!-- border-collapse="collapse" -->
   <tr>
-    <td><img src="/static/work/abtesting/binomial.png" width="100%" /></td>
-    <td><img src="/static/work/abtesting/poisson.png" width="100%" /></td>
-    <td><img src="/static/work/abtesting/normal.png" width="100%" /></td>
+    <td><img src="/static/img/work/abtesting/binomial.png" width="100%" /></td>
+    <td><img src="/static/img/work/abtesting/poisson.png" width="100%" /></td>
+    <td><img src="/static/img/work/abtesting/normal.png" width="100%" /></td>
   </tr>
   <tr>
     <td>Binomial Distribution</td>
@@ -96,7 +96,7 @@ In a typical experiment, α is set at 5% and β at 20%. It represents the psycho
 
 - How many cups can a lady answer correctly to reject the original hypothesis?
 As shown in the following probability histogram, the probability of a lady getting 3 cups right in a randomized situation is 2.29%, and the probability of getting 4 cups right is 1.43%. Therefore, as long as the lady chooses more than 2 cups correctly, it can be assumed with 95% confidence that the lady is capable of judging the order in which milk tea is added to milk and tea.
-![Histogram](/static/work/abtesting/.png)
+![Histogram](/static/img/work/abtesting/.png)
 
 ## Example - AB testing for changing the color of a button
 

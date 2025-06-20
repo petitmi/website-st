@@ -11,7 +11,7 @@ date: 2023-09-01
 
 你意识到这是异世界的天外来客在和你对话。
 
-![process](/static/blog/intestine-alien/sky.jpg)
+![process](/static/img/blog/intestine-alien/sky.jpg)
 
 它说，老朋友，我又来了。  
 你说，我们原来认识吗？  

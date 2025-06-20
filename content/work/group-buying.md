@@ -28,7 +28,7 @@ Community group-buying is a retail business model where customers are accustomed
 
 Unlike the traditional big-box approach, products are not sorted and packaged for consumers all at once. Instead, they undergo distributed sorting through shared warehouses, central warehouses, grid warehouses, and community sites. Products are only categorized into individual portions once they reach the community sites. During the previous transportation processes, they are consolidated. Additionally, shipments and redistributions between different regions occur based on sales or demand predictions.
 
-![process](/static/work/group-buying/process.jpg)
+![process](/static/img/work/group-buying/process.jpg)
 
 > The fulfillment process for community group-buying involves the transportation of primarily produced products from suppliers to nearby Shared Warehouses or Central Warehouses. Shared Warehouses function as hubs for Central Warehouses, which typically cover larger regions. Subsequently, the products are transported to Grid Warehouses strategically located in medium-sized areas. Finally, on the day of fulfillment, the products are delivered to Community Collection Points for customers to pick up.
 
