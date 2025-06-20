@@ -10,8 +10,9 @@ app = Flask(__name__)
 
 # Content directories
 CONTENT_DIR = Path('content')
+TEMPLATES_DIR = Path('templates')
 BLOG_DIR = CONTENT_DIR / 'blog'
-MUSIC_DIR = CONTENT_DIR / 'music'
+MUSIC_DIR = TEMPLATES_DIR / 'music'
 WORK_DIR = CONTENT_DIR / 'work'
 GALLERY_DIR = Path('static/img/gallery')
 
@@ -213,7 +214,16 @@ def gallery_detail(slug):
     
     return render_template('gallery/detail.html', 
                          gallery=gallery_info)
+@app.route('/music')
+def get_videos():
+    import json
 
+    with open(MUSIC_DIR/ 'init.json', 'r') as f:
+        data = json.load(f)
+        videos = data['videos']
+    print(videos)
+    return render_template('music/index.html', videos=videos)
+    
 # Template filters
 @app.template_filter('dateformat')
 def dateformat(value, format='%B %d, %Y'):
