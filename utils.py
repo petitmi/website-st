@@ -101,9 +101,9 @@ def get_gallery_images(gallery_path):
             with open(init_file, 'r', encoding='utf-8') as f:
                 metadata = frontmatter.load(f)
                 gallery_info.update({
-                    'photographer': metadata.get('photographer'),
+                    'creator': metadata.get('creator'),
                     'title': metadata.get('title'),
-                    'date': metadata.get('date')
+                    'date': metadata.get('date'),
                 })
         except Exception as e:
             print(f"Error processing gallery metadata {init_file}: {e}")
