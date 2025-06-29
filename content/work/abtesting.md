@@ -1,8 +1,8 @@
 ---
-title: "AB Testing Summary"
+title: "A/B Testing Summary"
 date: 2020-10-01
 ---
-## AB Testing Summary
+## A/B Testing Summary
 ### 2020-10-01
 The A/B testing is a randomized test that compares two different things (i.e., A and B) hypothetically. The test utilizes statistical hypothesis testing.
 An A/B testing can be used to test the difference between two different versions of a variable, usually by having A and B differ only in the target variable in an experiment, and then testing the difference between the responses of the two groups in the results as to which is better.
