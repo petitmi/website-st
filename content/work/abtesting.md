@@ -2,7 +2,7 @@
 title: "A/B Testing Summary"
 date: 2020-10-01
 ---
-# A/B Testing Summary 
+# A/B Testing Summary   
 **2020-10-01**  
 
 The A/B testing is a randomized test that compares two different things (i.e., A and B) hypothetically. The test utilizes statistical hypothesis testing.  

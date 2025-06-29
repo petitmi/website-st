@@ -73,7 +73,7 @@ While I place greater emphasis on death toll than duration, I also hope to avoid
 
 In this regard, I employed **K-means clustering with weighted attributes**, where the death toll carries 80% weight, and duration carries 20% weight.
 
-<img src="/static/work/war/clustering.png"/>
+<img src="/static/img/work/war/clustering.png"/>
 
 From the graph, I found the result well performed just as I expected. The cluster 0, 1, 2, and 3 can be representative of ‘Conflictual’, ‘Extreme’, ’Severe’, and ’Protracted’, respectively.
 
