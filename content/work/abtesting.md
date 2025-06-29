@@ -96,7 +96,7 @@ In a typical experiment, α is set at 5% and β at 20%. It represents the psycho
 
 - How many cups can a lady answer correctly to reject the original hypothesis?
 As shown in the following probability histogram, the probability of a lady getting 3 cups right in a randomized situation is 2.29%, and the probability of getting 4 cups right is 1.43%. Therefore, as long as the lady chooses more than 2 cups correctly, it can be assumed with 95% confidence that the lady is capable of judging the order in which milk tea is added to milk and tea.
-![Histogram](/static/img/work/abtesting/.png)
+![Histogram](/static/img/work/abtesting/histogram.png)
 
 ## Example - AB testing for changing the color of a button
 
@@ -107,7 +107,7 @@ The original button color is blue, and we want to investigate how changing the b
 Null Hypothesis (H0): Changing the button color from blue to green has no effect on user click-through rates.
 Alternative Hypothesis (H1): Changing the button color to green, as compared to blue, positively impacts user click-through rates.
 
-![Button ABtesting](/static/work/abtesting/button.png)
+![Button ABtesting](/static/img/work/abtesting/button.png)
 
 - **Determining the Model**
 
