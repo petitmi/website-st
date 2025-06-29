@@ -4,9 +4,9 @@ title: "How Likely Will a Bloody War Break Out?"
 date: 2023-12-01
 ---
 
-## How Likely Will a Bloody War Break Out?
+# How Likely Will a Bloody War Break Out?
 
-### 2023-12-01
+**2023-12-01**
 
 Is the world situation getting tight? Will I witness a bloody war as severe as World War II (WWII)?
 
@@ -24,7 +24,8 @@ Before delving into the details, let me first share the results:
 * **The likelihood of humanity experiencing a bloody war**, defined as one that results in more than 0.36% of deaths to the global population (288 million deaths based on the current population), by 2050 is estimated to be **99.85%**.
 * **The likelihood of witnessing more than 3 conflicts per year** is calculated to be **62.74%**.
 
-### Surprising facts:
+
+**Surprising facts:**
 
 * Considering the population at the time, the bloodiest war wasn’t WWII but one of the Chinese civil wars, the **Taiping Rebellion**.
 * The longest war, **Arab separatism in Khuzestan**, has lasted for over 100 years and ended in 2022.
@@ -49,7 +50,7 @@ How to evaluate the severity of a war — can I use the death toll directly? I b
 
 While we are all aware that WWII caused the highest death toll in wars throughout human history, my perspective changed dramatically after I calculated the proportion of the death toll to the population. In this context, the **Taiping Rebellion**, one of the Chinese civil wars, replaced WWII as the war with the highest death toll relative to its population.
 
-<img src="/static/work/war/taiping-rebellion.png"/>
+<img src="/static/img/work/war/taiping-rebellion.png"/>
 
 
 And **Dungan Revolt**, also one of the Chinese civil wars, surpassed World War I in terms of death toll proportion. Moreover, of the bloodiest 5 wars, 3 were China-related, which could be partly because China had the highest population at that time. Some may argue that major deaths in China should not carry more weight than fewer deaths in more developed countries, but I believe that every human life is of equal importance at the same time, regardless of affluence. So I still keep up with the death toll as the main consideration.
