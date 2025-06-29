@@ -37,7 +37,15 @@ def get_item_by_slug(directory, slug):
         with open(file_path, 'r', encoding='utf-8') as f:
             post = frontmatter.load(f)
             post['slug'] = slug
-            post['content_html'] = markdown.markdown(post.content, extensions=['codehilite', 'fenced_code'])
+            post['content_html'] = markdown.markdown(
+                post.content, 
+                extensions=['codehilite', 'fenced_code', 'toc'], 
+                extension_configs={
+                                    'toc': {
+                                        'toc_depth': '2-6'  # Only include h2-h6, skip h1
+                                    }
+                }
+            )
             
             # Handle date parsing
             if 'date' in post.metadata and isinstance(post.metadata['date'], str):
