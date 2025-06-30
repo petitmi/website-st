@@ -136,7 +136,7 @@ Therefore, we will use an independent two-sample proportion test. In cases with 
 
 ### Sample Size & Parameter Assessment
 
-When the button is blue, the average daily click-through rate for users is 2%. Now, the desired increase in click-through rate with the color change to green is 20%, aiming for 2.4%.
+When the button is blue, the average daily click-through rate for users is 2%. Now, the desired increase in click-through rate with the color change to green is 0.4pp, aiming for 2.4%.
 
 With a significance level (α) of 5% and statistical power (1-β) at 80%, how many samples are needed?
 
