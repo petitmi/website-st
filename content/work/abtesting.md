@@ -105,6 +105,7 @@ As an experiment, it is possible to get wrong feedback results. But we can contr
 
 
 In the case of the "lady tasting tea", the Type I error is that the lady actually has the ability to discriminate, while the experiment results judge that she cannot, and Type II is the opposite. The test for Type I errors is called a significance test. （The significance level is (1- α).  
+
 In a typical experiment, α is set at 5% and β at 20%. It represents the psychology of "it is better to miss four than to let one go" - in product feature experiments, **it represents that people would rather miss 4 good features than to let 1 bad feature go online**.
 
 - How many cups can a lady answer correctly to reject the original hypothesis?    
@@ -120,8 +121,8 @@ As shown in the following probability histogram, the probability of a lady getti
 
 The original button color is blue, and we want to investigate how changing the button color to green affects user click-through rates.
 
-Null Hypothesis (H0): Changing the button color from blue to green has no effect on user click-through rates.
-Alternative Hypothesis (H1): Changing the button color to green, as compared to blue, positively impacts user click-through rates.
+- Null Hypothesis (H0): Changing the button color from blue to green has no effect on user click-through rates.  
+- Alternative Hypothesis (H1): Changing the button color to green, as compared to blue, positively impacts user click-through rates.
 
 ![Button ABtesting](/static/img/work/abtesting/button.png)
 
