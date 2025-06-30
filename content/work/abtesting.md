@@ -177,20 +177,20 @@ Assuming
 
 \\(\text{Test Statistic z: }\frac{\bar{x1}-\bar{x2}-\mu_0}{{s_1}^2/n1+{s_2}^2/n_2}\\).
 
-Sample Size for Group A (n1): 178,056
-Sample Size for Group B (n2): 19,784
-Standard deviation (s) and mean (x) are calculated from actual data.
+Sample Size for Group A (n1): 178,056  
+Sample Size for Group B (n2): 19,784  
+Standard deviation (s) and mean (x) are calculated from actual data.  
 
-Parameters:
-Significance Level: 5%
-Statistical Power: 80%
+Parameters:  
+Significance Level: 5%  
+Statistical Power: 80%  
 
-- **Evaluation of Experimental Results**
+### Evaluation of Experimental Results
 
-1. Whether there is a change in click-through rate at a significance level of 95%.
-2. Assessment of the effective sample size and identification of outliers.
-3. Detailed segmentation: Analyze which user profiles or user segments experience a more significant increase in clicks and which experience less.
-4. Consideration of other relevant metrics: Variance, subsequent user behavior, etc.
+1. Whether there is an upward change in click-through rate at a confidence level of 95%.  
+2. Assessment of the effective sample size and identification of outliers.  
+3. Detailed segmentation: Analyze which user profiles or user segments experience a more significant increase in clicks and which experience less.  
+4. Consideration of other relevant metrics: Variance, subsequent user behavior, etc.  
 
 ---
 ## Pitfalls
