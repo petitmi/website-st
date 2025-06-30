@@ -99,7 +99,7 @@ As an experiment, it is possible to get wrong feedback results. But we can contr
 <td>Reject H0</td><td>Type I error (probability α)</td><td>H0 is False</td>
 </tr>
 <tr>
-<td>Accept H0</td><td>Right</td><td>Type II error (probability α)</td>
+<td>Accept H0</td><td>Right</td><td>Type II error (probability β)</td>
 </tr>
 </table>
 
