@@ -34,7 +34,7 @@ Which of the following scenarios are applicable for A/B test?   ✅❌
 ---
 ## Procedure 
 - Setting experimental objectives and establishing hypotheses;
-- Determine the distribution model, parameters (statistics, significance, statistical power, sample size);
+- Determine the distribution model, parameters (statistics, significance, statistical power, minimum detectable effect (MDE), sample size);
 - Determining the experimental protocol: experimental group & control group; flow distribution model;
 - A/A & A/B testing;
 - Evaluation of experimental effects: judgment of experimental validity; comparison of experimental results;
@@ -136,7 +136,7 @@ Therefore, we will use an independent two-sample proportion test. In cases with 
 
 ### Sample Size & Parameter Assessment
 
-When the button is blue, the average daily click-through rate for users is 2%. Now, the desired increase in click-through rate with the color change to green is 0.4pp, aiming for 2.4%.
+When the button is blue, the average daily click-through rate for users is 2%. Now, the desired increase in click-through rate with the color change to green is 0.4pp (MDE = 0.4%/2% = 20%), aiming for 2.4%.
 
 With a significance level (α) of 5% and statistical power (1-β) at 80%, how many samples are needed?
 
