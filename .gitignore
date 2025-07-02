@@ -38,3 +38,5 @@ instance/
 .DS_Store
 .DS_Store?
 *.DS_Store
+secrets.toml
+*.env

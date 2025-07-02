@@ -2,6 +2,10 @@ import os
 import markdown
 import frontmatter
 from datetime import datetime
+import smtplib
+import tomllib
+from email.mime.text import MIMEText
+
 
 def get_items_from_directory(directory, sort_by_date=True):
     """Get all markdown posts from a directory with frontmatter parsing"""
@@ -167,14 +171,32 @@ def load_music_data(music_dir):
         print(f"Error loading music data: {e}")
         return []
 
-# def parse_date_string(date_str, format='%Y-%m-%d'):
-#     """Parse date string into datetime object"""
-#     try:
-#         return datetime.strptime(date_str, format)
-#     except (ValueError, TypeError):
-#         return None
 
-# def create_directories(*directories):
-#     """Create multiple directories if they don't exist"""
-#     for directory in directories:
-#         os.makedirs(directory, exist_ok=True)
+
+def load_config():
+    """Load configuration from secrets.toml"""
+    with open("secrets.toml", "rb") as f:
+        return tomllib.load(f)
+
+def send_email(message):
+    """Send email with the given message"""
+    try:
+        config = load_config()
+        email_config = config["email"]
+        
+        # Create email
+        msg = MIMEText(f"Someone sent you a message: {message}")
+        msg['Subject'] = "Message from website"
+        msg['From'] = email_config["sender_email"]
+        msg['To'] = email_config["recipient_email"]
+        
+        # Send email
+        with smtplib.SMTP(os.getenv("SMTP_SERVER", "smtp.gmail.com"),int(os.getenv("SMTP_PORT", "587"))) as server:
+            server.starttls()
+            server.login(email_config["sender_email"], email_config["sender_password"])
+            server.send_message(msg)
+        
+        return True
+    except Exception as e:
+        print(f"Email error: {e}")
+        return False

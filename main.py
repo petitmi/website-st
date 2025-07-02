@@ -1,4 +1,4 @@
-from flask import Flask, render_template, abort
+from flask import Flask, render_template, abort, request, jsonify
 from datetime import datetime
 from pathlib import Path
 import os
@@ -8,7 +8,8 @@ from utils import (
     get_galleries,
     get_gallery_images,
     get_random_gallery_images,
-    load_music_data
+    load_music_data,
+    send_email
 )
 
 app = Flask(__name__)
@@ -73,6 +74,17 @@ def dateformat(value, format='%B %d, %Y'):
     if isinstance(value, datetime):
         return value.strftime(format)
     return value
+
+@app.route('/send_email', methods=['POST'])
+def handle_email():
+    data = request.get_json()
+    message = data.get('message', '')
+    
+    if send_email(message):
+        return jsonify({"status": "Successful! You also unlock my email: petitmi001@gmail.com."})
+    else:
+        return jsonify({"status": "Failed! You also unlock my email: petitmi001@gmail.com."})
+
 
 @app.errorhandler(404)
 def not_found(error):
