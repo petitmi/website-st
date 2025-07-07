@@ -83,7 +83,7 @@ def handle_email():
     if send_email(message):
         return jsonify({"status": "Successful! You also unlock my email: petitmi001@gmail.com."})
     else:
-        return jsonify({"status": "Failed! You also unlock my email: petitmi001@gmail.com."})
+        return jsonify({"status": "Failed! But you unlock my email: petitmi001@gmail.com."})
 
 
 @app.errorhandler(404)

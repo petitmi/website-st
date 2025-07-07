@@ -5,6 +5,7 @@ from datetime import datetime
 import smtplib
 import tomllib
 from email.mime.text import MIMEText
+import socket
 
 
 def get_items_from_directory(directory, sort_by_date=True):
@@ -180,9 +181,15 @@ def load_config():
 
 def send_email(message):
     """Send email with the given message"""
+    # Store original timeout
+    original_timeout = socket.getdefaulttimeout()
+    
     try:
         config = load_config()
         email_config = config["email"]
+        
+        # Set timeout to prevent hanging
+        socket.setdefaulttimeout(30)
         
         # Create email
         msg = MIMEText(f"Someone sent you a message: {message}")
@@ -190,13 +197,28 @@ def send_email(message):
         msg['From'] = email_config["sender_email"]
         msg['To'] = email_config["recipient_email"]
         
-        # Send email
-        with smtplib.SMTP(os.getenv("SMTP_SERVER", "smtp.gmail.com"),int(os.getenv("SMTP_PORT", "587"))) as server:
+        # Send email with timeout
+        with smtplib.SMTP(
+            os.getenv("SMTP_SERVER", "smtp.gmail.com"),
+            int(os.getenv("SMTP_PORT", "587")),
+            timeout=30  # Add explicit timeout here
+        ) as server:
             server.starttls()
             server.login(email_config["sender_email"], email_config["sender_password"])
             server.send_message(msg)
         
+        print("Email sent successfully!")
         return True
+        
+    except socket.timeout:
+        print("Email error: Connection timeout - SMTP server unreachable")
+        return False
+    except smtplib.SMTPException as e:
+        print(f"SMTP error: {e}")
+        return False
     except Exception as e:
         print(f"Email error: {e}")
         return False
+    finally:
+        # Always restore original timeout
+        socket.setdefaulttimeout(original_timeout)
