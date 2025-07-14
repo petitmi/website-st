@@ -2,9 +2,7 @@
 title: "Data Science In E-commerce Platforms Driven By Supply Chain Optimization"
 date: 2023-09-01
 ---
-## Data Science In E-commerce Platforms Driven By Supply Chain Optimization
 
-### 2023-09-01
 
 As a novel online retail model, community group-buying transforms individuals' grocery habits, as well as the supply chain, logistics, and warehousing. This business model combines the Bulk Purchase Sorting with Pre-sale Model, allowing it to achieve wholesale prices, but customers don't need to purchase in wholesale quantities. The key factor to the success of this model lies in the optimization of the supply chain. A management and visualization system, constructed with various precise, efficient, and sophisticated data science techniques, makes this possible.
 

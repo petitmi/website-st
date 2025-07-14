@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {%block container%}
+<h1>{{ item.title or item.slug }} </h1>
+<h3>{{ item.date.strftime('%Y-%m') if item.date else '' }}</h3>
 <div>{{ item.content_html|safe }}</div>
 
 

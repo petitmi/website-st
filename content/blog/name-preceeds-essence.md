@@ -3,9 +3,6 @@ title: "名字先于本质 / Name Preceeds Essence"
 date: 2023-08-01
 ---
 
-## 名字先于本质  
-## Name Preceeds Essence  
-### 2023-08-01
 
 朋友帮ta的朋友养猫，是一只折耳猫名字叫奥利奥。朋友又说自己家里还有一只美短名字也叫奥利奥。
 

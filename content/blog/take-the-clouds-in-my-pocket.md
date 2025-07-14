@@ -2,9 +2,7 @@
 title: "把云朵揽入口袋里 / Take the clouds in my pockets"
 date: 2023-05-01
 ---
-## 把云朵揽入口袋里
-## Take the clouds in my pockets
-### 2023-05-01
+
 
 <p>
 <table >

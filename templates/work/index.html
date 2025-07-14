@@ -6,7 +6,7 @@
 <ul>
   {% for item in item %}
     <li>
-      <h3><a href="/work/{{ item.slug }}">{{ item.title or item.slug }} ---  {{ item.date.strftime('%Y-%m-%d') if item.date else '' }}</a></h3>
+      <h3><a href="/work/{{ item.slug }}">{{ item.title or item.slug }} ---  {{ item.date.strftime('%Y-%m') if item.date else '' }}</a></h3>
     </li>
   {% endfor %}
 </ul>

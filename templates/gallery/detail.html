@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block container %}
-<h2>{{gallery['title']}}</h2>
-<h3>{{gallery['date']}}</h3>
+<h1>{{gallery['title']}}</h1>
+<h3>{{ gallery.date.strftime('%Y-%m') if gallery.date else '' }}</h3>
 
 <h3>creator: {{gallery['creator']}}</h3>
 <div style="display: flex; flex-wrap: wrap; gap: 10px; padding: 20px;">

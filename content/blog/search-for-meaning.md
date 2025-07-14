@@ -3,8 +3,6 @@ title: "My Search For Meaning"
 date: 2024-09-01
 ---
 
-## My Search For Meaning
-### September, 2024
 
 This is a philosophically wise book, answering questions of meaning that have haunted me since I was small. The book is woven through the author’s experiences as a Holocaust survivor, revealing philosophical thoughts about survival, freedom, and meaning. At a time when the world situation seems deteriorating, with a worsening economy and raging wars, and my personal life is suddenly in a difficult state, reading the insights in the book has made me feel reflective. I don’t consider myself easily moved, but while reading this book, I was deeply shaken multiple times.
 

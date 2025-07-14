@@ -4,10 +4,6 @@ title: "How Likely Will a Bloody War Break Out?"
 date: 2023-12-01
 ---
 
-# How Likely Will a Bloody War Break Out?
-
-**2023-12-01**
-
 Is the world situation getting tight? Will I witness a bloody war as severe as World War II (WWII)?
 
 The question is as significant as the cruelty of wars. Jean-Paul Sartre said, *‘When the rich wage war, it’s the poor who die.’* Ordinary people, unable to escape to a private island in their private helicopter, must either starve in half-destroyed places, constantly running, or become soldiers engaged in killing others violently. They also have to grapple with mental issues throughout their lives, even if they survive the war.

@@ -8,6 +8,48 @@ from email.mime.text import MIMEText
 import socket
 
 
+def parse_date(date_value):
+    """Parse date value and return datetime object or None"""
+    if not date_value:
+        return None
+    
+    # Already a datetime object
+    if hasattr(date_value, 'strftime'):
+        return date_value
+    
+    # Handle string dates
+    if isinstance(date_value, str):
+        formats = ['%Y-%m-%d', '%Y-%m', '%Y']
+        for fmt in formats:
+            try:
+                return datetime.strptime(date_value, fmt)
+            except ValueError:
+                continue
+        
+    return None
+
+def load_frontmatter_file(file_path):
+    """Load and parse a frontmatter file"""
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            return frontmatter.load(f)
+    except Exception as e:
+        print(f"Error processing {file_path}: {e}")
+        return None
+
+def process_post_metadata(post, slug=None):
+    """Process common post metadata"""
+    if slug:
+        post['slug'] = slug
+    
+    # Handle date parsing and store back to post
+    if 'date' in post.metadata:
+        processed_date = parse_date(post.metadata['date'])
+        post['date'] = processed_date
+        post.metadata['date'] = processed_date  
+    
+    return post
+
 def get_items_from_directory(directory, sort_by_date=True):
     """Get all markdown posts from a directory with frontmatter parsing"""
     posts = []
@@ -15,21 +57,13 @@ def get_items_from_directory(directory, sort_by_date=True):
         return posts
     
     for file_path in directory.glob('*.md'):
-        try:
-            with open(file_path, 'r', encoding='utf-8') as f:
-                post = frontmatter.load(f)
-                post['slug'] = file_path.stem
-                
-                # Handle date parsing
-                if 'date' in post.metadata and isinstance(post.metadata['date'], str):
-                    post['date'] = datetime.strptime(post.metadata['date'], '%Y-%m-%d')
-                
-                posts.append(post)
-        except Exception as e:
-            print(f"Error processing {file_path}: {e}")
+        post = load_frontmatter_file(file_path)
+        if post:
+            process_post_metadata(post, slug=file_path.stem)
+            posts.append(post)
     
     if sort_by_date and posts:
-        posts.sort(key=lambda x: x.get('date', datetime.min), reverse=True)
+        posts.sort(key=lambda x: x.get('date') or datetime.min, reverse=True)
     return posts
 
 def get_item_by_slug(directory, slug):
@@ -38,63 +72,52 @@ def get_item_by_slug(directory, slug):
     if not file_path.exists():
         return None
     
-    try:
-        with open(file_path, 'r', encoding='utf-8') as f:
-            post = frontmatter.load(f)
-            post['slug'] = slug
-            post['content_html'] = markdown.markdown(
-                post.content, 
-                extensions=['codehilite', 'fenced_code', 'toc'], 
-                extension_configs={
-                                    'toc': {
-                                        'toc_depth': '2-6'  # Only include h2-h6, skip h1
-                                    }
-                }
-            )
-            
-            # Handle date parsing
-            if 'date' in post.metadata and isinstance(post.metadata['date'], str):
-                post['date'] = datetime.strptime(post.metadata['date'], '%Y-%m-%d')
-            
-            return post
-    except Exception as e:
-        print(f"Error processing {file_path}: {e}")
+    post = load_frontmatter_file(file_path)
+    if not post:
         return None
+    
+    process_post_metadata(post, slug=slug)
+    
+    # Generate HTML content
+    post['content_html'] = markdown.markdown(
+        post.content, 
+        extensions=['codehilite', 'fenced_code', 'toc'], 
+        extension_configs={
+            'toc': {
+                'toc_depth': '2-6'  # Only include h2-h6, skip h1
+            }
+        }
+    )
+    
+    return post
 
 def get_galleries(gallery_dir):
     """Get all gallery folders with their metadata"""
     galleries = []
 
     for gallery_path in gallery_dir.iterdir():
-        if gallery_path.is_dir():
-            gallery_info = {
-                'slug': gallery_path.name,
-                'path': gallery_path,
-                'title': gallery_path.name.replace('-', ' ').title(),
-                'date': None,
-            }
+        if not gallery_path.is_dir():
+            continue
             
-            # Parse init.md if it exists
-            init_file = gallery_path / 'init.md'
-            if init_file.exists():
-                try:
-                    with open(init_file, 'r', encoding='utf-8') as f:
-                        metadata = frontmatter.load(f)
-                        gallery_info.update({
-                            'title': metadata.get('title', gallery_info['title']),
-                            'date': metadata.get('date'),
-                        })
-                        
-                        # Handle date parsing
-                        if gallery_info['date'] and isinstance(gallery_info['date'], str):
-                            gallery_info['date'] = datetime.strptime(gallery_info['date'], '%Y-%m-%d')
-                                                        
-                except Exception as e:
-                    print(f"Error processing gallery metadata {init_file}: {e}")
-                        
-            galleries.append(gallery_info)
+        gallery_info = {
+            'slug': gallery_path.name,
+            'path': gallery_path,
+            'title': gallery_path.name.replace('-', ' ').title(),
+            'date': None,
+        }
+        
+        # Parse init.md if it exists
+        init_file = gallery_path / 'init.md'
+        if init_file.exists():
+            metadata = load_frontmatter_file(init_file)
+            if metadata:
+                gallery_info.update({
+                    'title': metadata.get('title', gallery_info['title']),
+                    'date': parse_date(metadata.get('date')),
+                })
+                    
+        galleries.append(gallery_info)
     
-    # Sort by date (newest first)
     galleries.sort(key=lambda x: x.get('date') or datetime.min, reverse=True)
     return galleries
 
@@ -110,16 +133,13 @@ def get_gallery_images(gallery_path):
     # Parse init.md for metadata
     init_file = gallery_path / 'init.md'
     if init_file.exists():
-        try:
-            with open(init_file, 'r', encoding='utf-8') as f:
-                metadata = frontmatter.load(f)
-                gallery_info.update({
-                    'creator': metadata.get('creator'),
-                    'title': metadata.get('title'),
-                    'date': metadata.get('date'),
-                })
-        except Exception as e:
-            print(f"Error processing gallery metadata {init_file}: {e}")
+        metadata = load_frontmatter_file(init_file)
+        if metadata:
+            gallery_info.update({
+                'creator': metadata.get('creator'),
+                'title': metadata.get('title'),
+                'date': parse_date(metadata.get('date')),
+            })
 
     # Get image files
     for img_file in os.listdir(gallery_path):
@@ -136,7 +156,7 @@ def get_gallery_images(gallery_path):
     gallery_info['images'] = images
     return gallery_info
 
-def get_random_gallery_images(gallery_dir, count=3, exclude_dirs=None):
+# def get_random_gallery_images(gallery_dir, count=3, exclude_dirs=None):
     """Get random images from all galleries"""
     if exclude_dirs is None:
         exclude_dirs = {'not-display'}
@@ -171,8 +191,6 @@ def load_music_data(music_dir):
     except Exception as e:
         print(f"Error loading music data: {e}")
         return []
-
-
 
 def load_config():
     """Load configuration from secrets.toml"""

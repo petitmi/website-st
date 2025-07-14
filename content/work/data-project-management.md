@@ -2,8 +2,7 @@
 title: "Takeaways On Data Project Management"
 date: 2023-09-01
 ---
-## Takeaways On Data Project Management
-### 2023-09-01
+
 
 ## What's the profit? Or is it a bet?
 

@@ -7,7 +7,7 @@ from utils import (
     get_item_by_slug,
     get_galleries,
     get_gallery_images,
-    get_random_gallery_images,
+    # get_random_gallery_images,
     load_music_data,
     send_email
 )
@@ -30,8 +30,9 @@ SECTIONS = {
 
 @app.route('/')
 def index():
-    random_images = get_random_gallery_images(GALLERY_DIR, count=3, exclude_dirs=['not-display'])
-    return render_template('index.html', images=random_images)
+    # random_images = get_random_gallery_images(GALLERY_DIR, count=3, exclude_dirs=['not-display'])
+    # return render_template('index.html', images=random_images)
+    return render_template('index.html')
 
 @app.route('/<section>')
 def section_index(section):

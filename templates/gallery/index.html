@@ -7,7 +7,7 @@
     {% for gallery in galleries %}
         <a href="{{ url_for('gallery_detail', slug=gallery.slug) }}" class="gallery-card">
             <div class="gallery-info">
-                <h3 class="gallery-title">{{ gallery.title }} --- {{ gallery.date|dateformat }}</h3>
+                <h3 class="gallery-title">{{ gallery.title }} --- {{ gallery.date.strftime('%Y-%m') if gallery.date else '' }}</h3>
             </div>
         </a>
     {% endfor %}
@@ -15,8 +15,6 @@
 {% else %}
 <div class="empty-state">
     <h2>No galleries found</h2>
-    <p>Create your first gallery by adding a folder to <code>/static/img/gallery/</code></p>
-    <a href="{{ url_for('index') }}" class="nav-link">← Back to Home</a>
 </div>
 {% endif %}
 {%endblock%}

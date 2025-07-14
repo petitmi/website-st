@@ -3,9 +3,6 @@ title: "在所有的感觉里 / In all the feels"
 date: 2023-06-01
 ---
 
-## 在所有的感觉里  
-## In all the feels  
-### 2023-06-01
 
 In all the feels  
 it's hitting my softest gut  
