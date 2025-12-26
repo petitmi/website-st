@@ -1,6 +1,6 @@
 from flask import Flask
-from backend.personal.routes import personal_bp
-from backend.ecommerce.routes import ecommerce_bp
+from .personal.routes import personal_bp
+from .ecommerce.routes import ecommerce_bp
 from flask import send_from_directory
 import os
 
