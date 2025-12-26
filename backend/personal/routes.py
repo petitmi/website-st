@@ -3,12 +3,8 @@ from datetime import datetime
 from pathlib import Path
 from .utils import get_items_from_directory, get_item_by_slug, get_galleries, get_gallery_images, load_music_data
 
-personal_bp = Blueprint(
-    'personal',
-    __name__,
-    template_folder='templates',   # relative to personal/ folder
-    static_folder='static',
-)
+personal_bp = Blueprint('personal', __name__)
+
 # Content directories
 CONTENT_DIR = Path(__file__).parent / "content"
 BLOG_DIR = CONTENT_DIR / "blog"
