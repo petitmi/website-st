@@ -10,7 +10,23 @@ def create_app():
     
     app = Flask(__name__,
                 template_folder=os.path.join(backend_dir, "personal/templates"),
-                static_folder=os.path.join(backend_dir, "personal/static"))    
+                static_folder=os.path.join(backend_dir, "personal/static")) 
+    
+    @app.route('/debug-static')
+    def debug_static():
+        import os
+        static_path = app.static_folder
+        files = []
+        for root, dirs, filenames in os.walk(static_path):
+            for f in filenames:
+                files.append(os.path.join(root, f).replace(static_path, ''))
+        return f"""
+        <h3>Static folder: {static_path}</h3>
+        <h3>Static URL path: {app.static_url_path}</h3>
+        <h3>Files found:</h3>
+        <pre>{chr(10).join(files)}</pre>
+        """
+       
     # Register blueprints
     app.register_blueprint(personal_bp)         # personal routes at /
     # ecommerce routes at /api
