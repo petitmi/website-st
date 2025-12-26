@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   AppBar,
   Toolbar,
@@ -21,7 +21,10 @@ import {
   ListItemText,
   ButtonGroup,
   Chip,
-  Paper
+  Paper,
+  CircularProgress,
+  Snackbar,
+  Alert
 } from '@mui/material';
 import {
   ShoppingCart,
@@ -38,6 +41,11 @@ import {
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [products, setProducts] = useState([]);
+  const [contactInfo, setContactInfo] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
+  const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -46,16 +54,36 @@ const App = () => {
     message: ''
   });
 
-  const products = [
-    { id: 1, name: 'Classic Aviator', price: 45, image: '🕶️', description: 'Timeless aviator design', moq: 50 },
-    { id: 2, name: 'Retro Round', price: 38, image: '🥽', description: 'Vintage round frames', moq: 50 },
-    { id: 3, name: 'Sport Shield', price: 52, image: '🕶️', description: 'Performance sports design', moq: 100 },
-    { id: 4, name: 'Cat Eye Glam', price: 42, image: '😎', description: 'Elegant cat eye style', moq: 50 },
-    { id: 5, name: 'Wayfarer Classic', price: 48, image: '🕶️', description: 'Iconic wayfarer shape', moq: 50 },
-    { id: 6, name: 'Oversized Square', price: 55, image: '🥽', description: 'Bold square frames', moq: 75 },
-    { id: 7, name: 'Polarized Pilot', price: 65, image: '🕶️', description: 'Premium polarized lenses', moq: 100 },
-    { id: 8, name: 'Mirrored Sport', price: 58, image: '😎', description: 'Reflective sport lenses', moq: 100 },
-  ];
+  // Fetch data on component mount
+  useEffect(() => {
+    fetchProducts();
+    fetchContactInfo();
+  }, []);
+
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch('/api/products');
+      if (!response.ok) throw new Error('Failed to fetch products');
+      const data = await response.json();
+      setProducts(data);
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      setSnackbar({ open: true, message: 'Failed to load products', severity: 'error' });
+      setLoading(false);
+    }
+  };
+
+  const fetchContactInfo = async () => {
+    try {
+      const response = await fetch('/api/contact-info');
+      if (!response.ok) throw new Error('Failed to fetch contact info');
+      const data = await response.json();
+      setContactInfo(data);
+    } catch (error) {
+      console.error('Error fetching contact info:', error);
+    }
+  };
 
   const addToCart = (product) => {
     const existing = cartItems.find(item => item.id === product.id);
@@ -79,18 +107,53 @@ const App = () => {
     setCartItems(cartItems.filter(item => item.id !== id));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!formData.name || !formData.email || !formData.phone) {
-      alert('Please fill in all required fields (Name, Email, Phone)');
+      setSnackbar({ open: true, message: 'Please fill in all required fields', severity: 'warning' });
       return;
     }
-    alert('Thank you! We will contact you shortly with a quote.');
-    setCartItems([]);
-    setIsDrawerOpen(false);
-    setFormData({ name: '', email: '', phone: '', company: '', message: '' });
+
+    setSubmitting(true);
+
+    try {
+      const response = await fetch('/api/inquiry', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          cartItems: cartItems
+        })
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setSnackbar({ open: true, message: data.message, severity: 'success' });
+        setCartItems([]);
+        setIsDrawerOpen(false);
+        setFormData({ name: '', email: '', phone: '', company: '', message: '' });
+      } else {
+        setSnackbar({ open: true, message: data.error || 'Failed to submit inquiry', severity: 'error' });
+      }
+    } catch (error) {
+      console.error('Error submitting inquiry:', error);
+      setSnackbar({ open: true, message: 'Network error. Please try again.', severity: 'error' });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+  if (loading) {
+    return (
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <CircularProgress size={60} />
+      </Box>
+    );
+  }
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -98,7 +161,7 @@ const App = () => {
       <AppBar position="sticky" sx={{ bgcolor: '#1e293b' }}>
         <Toolbar>
           <Typography variant="h5" component="div" sx={{ flexGrow: 1, fontWeight: 'bold' }}>
-            🕶️ SunStyle Wholesale
+            🕶️ {contactInfo?.companyName || 'SunStyle Wholesale'}
           </Typography>
           <Button
             color="inherit"
@@ -138,62 +201,68 @@ const App = () => {
         <Typography variant="h4" component="h2" align="center" gutterBottom fontWeight="bold" sx={{ mb: 6 }}>
           Our Collection
         </Typography>
-        <Grid container spacing={4}>
-          {products.map(product => (
-            <Grid item xs={12} sm={6} md={3} key={product.id}>
-              <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', '&:hover': { boxShadow: 6 } }}>
-                <CardMedia
-                  sx={{
-                    height: 180,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    bgcolor: '#f1f5f9',
-                    fontSize: '5rem'
-                  }}
-                >
-                  {product.image}
-                </CardMedia>
-                <CardContent sx={{ flexGrow: 1 }}>
-                  <Typography gutterBottom variant="h6" component="h3" fontWeight="bold">
-                    {product.name}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-                    {product.description}
-                  </Typography>
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <Box>
-                      <Typography variant="h5" fontWeight="bold" color="primary">
-                        ${product.price}
-                      </Typography>
-                      <Typography variant="caption" color="text.secondary">
-                        per unit
-                      </Typography>
-                    </Box>
-                    <Box sx={{ textAlign: 'right' }}>
-                      <Typography variant="caption" color="text.secondary">
-                        MOQ
-                      </Typography>
-                      <Typography variant="body2" fontWeight="bold">
-                        {product.moq} units
-                      </Typography>
-                    </Box>
-                  </Box>
-                </CardContent>
-                <CardActions>
-                  <Button
-                    fullWidth
-                    variant="contained"
-                    sx={{ bgcolor: '#1e293b', '&:hover': { bgcolor: '#0f172a' } }}
-                    onClick={() => addToCart(product)}
+        {products.length === 0 ? (
+          <Paper elevation={0} sx={{ p: 6, textAlign: 'center', bgcolor: '#f8fafc' }}>
+            <Typography variant="h6" color="text.secondary">No products available</Typography>
+          </Paper>
+        ) : (
+          <Grid container spacing={4}>
+            {products.map(product => (
+              <Grid item xs={7} sm={4} md={2} key={product.id}>
+                <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', '&:hover': { boxShadow: 6 } }}>
+                  <CardMedia
+                    sx={{
+                      height: 250,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      bgcolor: '#f1f5f9',
+                      fontSize: '5rem'
+                    }}
                   >
-                    Add to Inquiry
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+                    {product.image}
+                  </CardMedia>
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography gutterBottom variant="h6" component="h3" fontWeight="bold">
+                      {product.name}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                      {product.description}
+                    </Typography>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <Box>
+                        <Typography variant="h5" fontWeight="bold" color="primary">
+                          ${product.price}
+                        </Typography>
+                        <Typography variant="caption" color="text.secondary">
+                          per unit
+                        </Typography>
+                      </Box>
+                      <Box sx={{ textAlign: 'right' }}>
+                        <Typography variant="caption" color="text.secondary">
+                          MOQ
+                        </Typography>
+                        <Typography variant="body2" fontWeight="bold">
+                          {product.moq} units
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      fullWidth
+                      variant="contained"
+                      sx={{ bgcolor: '#1e293b', '&:hover': { bgcolor: '#0f172a' } }}
+                      onClick={() => addToCart(product)}
+                    >
+                      Add to Inquiry
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        )}
       </Container>
 
       {/* Company Info Footer */}
@@ -205,7 +274,7 @@ const App = () => {
                 About Us
               </Typography>
               <Typography variant="body2" sx={{ color: '#cbd5e1', lineHeight: 1.8 }}>
-                SunStyle Wholesale has been supplying premium sunglasses to retailers and brands worldwide for over 15 years. We specialize in wholesale distribution and custom manufacturing solutions.
+                {contactInfo?.companyName || 'SunStyle Wholesale'} has been supplying premium sunglasses to retailers and brands worldwide for over 15 years. We specialize in wholesale distribution and custom manufacturing solutions.
               </Typography>
             </Grid>
             <Grid item xs={12} md={4}>
@@ -225,24 +294,28 @@ const App = () => {
                 Contact Information
               </Typography>
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, color: '#cbd5e1' }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                  <Email fontSize="small" />
-                  <Typography variant="body2">sales@sunstyle.com</Typography>
-                </Box>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                  <Phone fontSize="small" />
-                  <Typography variant="body2">+1 (236) 123-4567</Typography>
-                </Box>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                  <LocationOn fontSize="small" />
-                  <Typography variant="body2">123 Vancouver St, V5R6B7</Typography>
-                </Box>
+                {contactInfo && (
+                  <>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <Email fontSize="small" />
+                      <Typography variant="body2">{contactInfo.email}</Typography>
+                    </Box>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <Phone fontSize="small" />
+                      <Typography variant="body2">{contactInfo.phone}</Typography>
+                    </Box>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <LocationOn fontSize="small" />
+                      <Typography variant="body2">{contactInfo.address}</Typography>
+                    </Box>
+                  </>
+                )}
               </Box>
             </Grid>
           </Grid>
           <Divider sx={{ my: 4, bgcolor: '#475569' }} />
           <Typography variant="body2" align="center" sx={{ color: '#94a3b8' }}>
-            © 2024 SunStyle Wholesale. All rights reserved.
+            © 2024 {contactInfo?.companyName || 'SunStyle Wholesale'}. All rights reserved.
           </Typography>
         </Container>
       </Box>
@@ -357,15 +430,28 @@ const App = () => {
               variant="contained"
               size="large"
               fullWidth
-              startIcon={<Send />}
+              startIcon={submitting ? <CircularProgress size={20} color="inherit" /> : <Send />}
               onClick={handleSubmit}
+              disabled={submitting}
               sx={{ bgcolor: '#1e293b', '&:hover': { bgcolor: '#0f172a' }, mt: 2 }}
             >
-              Submit Inquiry
+              {submitting ? 'Submitting...' : 'Submit Inquiry'}
             </Button>
           </Box>
         </Box>
       </Drawer>
+
+      {/* Snackbar for notifications */}
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={6000}
+        onClose={() => setSnackbar({ ...snackbar, open: false })}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      >
+        <Alert onClose={() => setSnackbar({ ...snackbar, open: false })} severity={snackbar.severity} sx={{ width: '100%' }}>
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 };
