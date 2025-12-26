@@ -1,42 +1,31 @@
-# Virtual environments
+# ---------------------------
+# Python / Flask
+# ---------------------------
 venv/
 env/
 .env/
 .venv/
-
-# Python
 __pycache__/
 *.py[cod]
 *$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# Flask
 instance/
 .webassets-cache
+*.egg-info/
 
-# IDE
+# ---------------------------
+# IDE / OS
+# ---------------------------
 .vscode/
 .idea/
 *.swp
 *.swo
 .DS_Store
-.DS_Store?
 *.DS_Store
 secrets.toml
-*.env
+
+# ---------------------------
+# Node / React
+# ---------------------------
+frontend/node_modules/
+frontend/build/
+frontend/.env
