@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{%block container%}
+<h2 class="font-display text-4xl mt-0">Work Projects</h2>
+
+
+<ul>
+  {% for item in items %}
+    <li>
+      <h3>
+        <a href="{{ url_for('personal.section_detail', section='work', slug=item.slug) }}">
+          {{ item.title or item.slug }} ---  {{ item.date.strftime('%Y-%m') if item.date else '' }}</a></h3>
+    </li>
+  {% endfor %}
+</ul>
+
+{%endblock%}

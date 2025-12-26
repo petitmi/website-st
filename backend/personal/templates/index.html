@@ -1,0 +1,129 @@
+{% extends 'base.html' %} {%block container%}
+<style>
+    .line {
+        width: 100%;
+        border-bottom: 1px dashed black;
+        height: 20px;
+    }
+</style>
+
+<header>
+    <h1 class="font-display text-sm">About Me</h1>
+    <h2 class="font-display text-4xl mt-0">Yuchen Zhang</h2>
+    <!-- <h3 class="font-display text-2xl">March, 2025</h3> -->
+</header>
+<div class="max-w-prose">
+    <p><b>Welcome. This is some stuff about me.</b></p>
+    <p>欢迎您来。这是我的一些介绍。</p>
+    <p> I studied Statistics for my undergrad, and a few years into my career, I went back to pursue a Master’s in Data Science. In between, I took a year off to study electric guitar at Midi School. So far, I’ve spent the first three-fifths of my life in
+        Xi’an, the next three-tenths in Beijing, and the remaining one-tenth in Vancouver.
+    </p>
+    <p>我本科是统计学，工作几年后，又读了数据科学硕士。中间有一年脱产在迷笛学了电吉他。 截至2026，我人生的前3/5在西安，中间3/10在北京，余下的1/10在温哥华
+    </p>
+    <p>Right after I graduated with my bachelor’s degree, it happened to be the big data era. My title shifted between Data Analyst and Data Product Manager, and I’ve worked both at a niche startup and at an internet giant with hundreds of millions of users.
+        The constant through it all has been that I’ve stayed in the internet industry.</p>
+    <p>本科毕业后正好是大数据时代，我的title在数据分析师和数据产品经理之间转换，在小而美的创业公司和用户好几亿的巨头都待过，不变的是都在互联网行业。</p>
+    <p>I am now working in Vancouver as a Data Analyst.</p>
+    <p>现在在温哥华做数据分析师。</p>
+
+    <p><a href="https://www.linkedin.com/in/yz-xmmz/" target="_blank" style="color: #0072B1;">LinkedIn</a></p>
+
+    <p>Some of my favorite movies are <i>Persian Lessons</i> and <i>1917</i>. My favorite books include <i>Love in the Time of Cholera</i>, the <i>Neapolitan Novels</i>, and <i>Hidden Valley Road</i>.
+    </p>
+    <p>我最喜欢的电影是《波斯语课》和《1917》。最喜欢的书有《霍乱时期的爱情》、《那不勒斯四部曲》，和《隐谷路》。</p>
+
+    <p>I used to enjoy songwriting a lot, writing songs day and night, mostly about love obsession and political frustration. Some of them I produced hard and released on platforms including Spotify; you can find them by searching “xmmz.”
+    </p>
+    <p>以前很喜欢写歌，乱七八糟写了很多，题材大多是爱情的沉迷和政治的愤怒。其中有一些作品，我很认真制作了，然后发布到了包括spotify的各个平台，可以通过xmmz搜到我。</p>
+
+    <p><a href="https://open.spotify.com/artist/2KSLzywG3mq1vxbO37yoO3" target="_blank" style="color: #1DB954;">Spotify</a></p>
+    <p><a href="https://music.apple.com/us/artist/xmmz/1761669624" target="_blank" style="color: #FF4E6B;">Apple Music</a></p>
+
+    <p>I also love all kinds of racket sports. I’ve played table tennis since I was a kid, and now I play tennis.</p>
+    </p>
+    <p>还热爱各类挥拍类运动，从小打乒乓球，现在打网球。</p>
+
+    <p> <mark onclick="getUserInput()" style="cursor: pointer;">Reach me out.</mark></p>
+
+
+</div>
+
+
+<!-- <p>Check out the links about me: [Blogs](https://petitmi.com/bread) | [Medium](https://medium.com/@petitmi001) | [Linkedin](https://www.linkedin.com/in/yuchen-nyx-zhang/) | [Youtube](https://www.youtube.com/channel/UC6YTScw2p9u6AHp-tgXDIrA)</p> -->
+<script>
+    for (let i = 0; i < 12; i++) {
+        document.write('<div class="line"></div>');
+    }
+
+    function getUserInput() {
+        let userText = prompt("Haaaallo! Send anonymous message to me:");
+        if (userText) {
+            fetch('/send_email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: userText
+                    })
+                })
+                .then(response => response.json())
+                .then(
+                    data => {
+                        alert(data.status);
+                    })
+                .catch(error => {
+                    alert('Error! Send by your own: petitmi001@gmail.com');
+                });
+        }
+    }
+</script>
+
+<div class="relative flexible flex space-x-2  max-w-prose overflow-hidden">
+    <pre role="img" class="font-display-mono aliased text-10">
+         />    <\
+        //      \\
+  <\   \\  __   //   />
+    \\___\\(oo)//___//
+     `---.X{II}X.---'
+  ______//=/\/\=\\_____
+  `-----/| =  = |\-----'
+       //\ =\/= /\\
+      ((  `-..-'  ))
+       \)        (/  hjw
+  </pre>
+    <pre role="img" class="font-display-mono aliased text-10">
+        />    <\
+       //      \\
+  <\   \\  __  //   />
+   \\___\\(oo)//___//
+    `---.X{II}X.---'
+  ______//=/\/\=\\_____
+  `-----/| =  = |\-----'
+      //\ =\/= /\\
+     ((  `-..-'  ))
+      \)        (/  hjw
+  </pre>
+    <pre role="img" class="font-display-mono aliased text-10">
+        />    <\
+       //      \\
+  <\   \\  __  //   />
+   \\___\\(oo)//___//
+    `---.X{II}X.---'
+  ______//=/\/\=\\_____
+  `-----/| =  = |\-----'
+      //\ =\/= /\\
+     ((  `-..-'  ))
+      \)        (/  hjw
+  </pre>
+</div>
+
+<!-- <a href="https://linktr.ee/xmmz" target="_blank" rel="noopener noreferrer">
+    <img src="{{ url_for('static', filename='img/index/xmmz.png') }}" style="height:300px"/>
+  </a>
+{%for image in images%}
+<img src="{{ url_for('static', filename=image) }}" style="height:200px"/>
+{% endfor %} -->
+<!-- <img src="{{ url_for('static', filename='img/index/mask.JPG') }}" style="height:400px"/> -->
+
+{%endblock%}
