@@ -4,11 +4,13 @@ from .ecommerce.routes import ecommerce_bp
 from flask import send_from_directory
 import os
 
-
 def create_app():
+    # Get the backend directory path
+    backend_dir = os.path.dirname(os.path.abspath(__file__))
+    
     app = Flask(__name__,
-                template_folder="personal/templates",
-                static_folder="personal/static")
+                template_folder=os.path.join(backend_dir, "personal/templates"),
+                static_folder=os.path.join(backend_dir, "personal/static"))
 
     # Register blueprints
     app.register_blueprint(personal_bp)         # personal routes at /
