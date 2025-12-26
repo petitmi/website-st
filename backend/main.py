@@ -10,8 +10,7 @@ def create_app():
     
     app = Flask(__name__,
                 template_folder=os.path.join(backend_dir, "personal/templates"),
-                static_folder=os.path.join(backend_dir, "personal/static"))
-
+                static_folder=os.path.join(backend_dir, "personal/static"))    
     # Register blueprints
     app.register_blueprint(personal_bp)         # personal routes at /
     # ecommerce routes at /api
