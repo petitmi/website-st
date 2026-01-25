@@ -28,17 +28,20 @@ def create_app():
         """
        
     # Register blueprints
-    app.register_blueprint(personal_bp)         # personal routes at /
-    # ecommerce routes at /api
+    app.register_blueprint(personal_bp)
     app.register_blueprint(ecommerce_bp, url_prefix='/api')
+
+    # Define react build path
+    react_build = os.path.join(os.path.dirname(__file__), "..", "frontend", "sunglasses", "build")
 
     @app.route("/store", defaults={"path": ""})
     @app.route("/store/<path:path>")
     def serve_store(path):
-        react_build = os.path.join(os.path.dirname(
-            __file__), "..", "frontend", "sunglasses", "build")
-        if path and os.path.exists(os.path.join(react_build, path)):
+        # If path exists and is a file, serve it
+        file_path = os.path.join(react_build, path)
+        if path and os.path.isfile(file_path):
             return send_from_directory(react_build, path)
+        # Otherwise serve index.html
         return send_from_directory(react_build, "index.html")
 
     return app
