@@ -102,7 +102,7 @@ const App = () => {
     }
   };
   return (
-    <Router>
+    <Router basename='/store'>
       <Routes>
         <Route 
           path="/" 

@@ -155,8 +155,7 @@ Products of Interest:
 def get_contact_info():
     """Get company contact information"""
     return jsonify({
-        'email': 'van.sunglasses.yz@gmail.com',
-        'phone': '+1 (236) 123-4567',
-        'address': '123 Vancouver St, Vancouver BC V5R 6B7',
-        'companyName': 'Funxter Wholesale'
+        'email': 'funxter.van@gmail.com',
+        'phone': '+1 (236) 970-0608',
+        'companyName': 'FUNXTER'
     })
