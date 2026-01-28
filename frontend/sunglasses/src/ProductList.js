@@ -326,7 +326,22 @@ const ProductList = ({
                 letterSpacing: '0.5px'
                 }}
             >
-                Hey! I'm the solo human behind funxter, running this little corner
+                Hey! I'm the{' '}
+    <a 
+        href="https://xmmz.me" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        style={{ 
+            color: '#00E5FF', 
+            textDecoration: 'none',
+            borderBottom: '2px dotted #00E5FF',
+            transition: 'all 0.2s'
+        }}
+        onMouseEnter={(e) => e.target.style.color = '#FFC947'}
+        onMouseLeave={(e) => e.target.style.color = '#00E5FF'}
+    >
+        solo human
+    </a>  behind funxter, running this little corner
                 from Vancouver. Quality and cool sunglasses through a connection
                 that lets us offer designs you'd normally pay 10x–50x for.
                 <br />
