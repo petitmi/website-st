@@ -885,7 +885,7 @@ const ProductDetail = ({
                 mb: 1 
               }}
             >
-              📧 {contactInfo?.email || 'van.sunglasses.yz@gmail.com'}
+              📧 {contactInfo?.email || 'funxter.van@gmail.com'}
             </Typography>
             <Typography 
               variant="body2" 
