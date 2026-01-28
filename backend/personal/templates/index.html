@@ -5,6 +5,30 @@
         border-bottom: 1px dashed black;
         height: 20px;
     }
+    
+    .link-with-icon {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+    }
+    
+    .link-icon {
+        width: 1em;
+        height: 1em;
+        vertical-align: middle;
+    }
+    
+    .link-with-icon:hover {
+        opacity: 0.8;
+        transition: opacity 0.2s ease;
+    }
+    
+    .link-with-icon + .link-with-icon {
+        margin-left: 12px;
+    }
+    
+
 </style>
 
 <header>
@@ -13,35 +37,179 @@
     <!-- <h3 class="font-display text-2xl">March, 2025</h3> -->
 </header>
 <div class="max-w-prose">
-    <p><b>Welcome. This is some stuff about me.</b></p>
-    <p>欢迎您来。这是我的一些介绍。</p>
-    <p> Studied statistics as an undergrad, then got my master's in data science. In between, I took a year off to learn electric guitar at Midi School of Music.
+    <div class="line"></div>
+    <p> 
+        我是一名数据科学家，拥有统计学本科学位和数据科学硕士学位。 I am a data scientist with a bachelor’s degree in statistics and a master’s degree in data science.  
+        <a href="https://www.linkedin.com/in/yz-xmmz/" target="_blank" class="link-with-icon" style="color: #0072B1;">
+            <img src="{{ url_for('static', filename='img/icon/LinkedIn.png') }}" alt="LinkedIn" class="link-icon">
+            <span><b>LinkedIn</b></span>
+        </a> 
     </p>
-    <p>我统计学本科,数据科学硕士。中间Gap Year去迷笛学了一年电吉他。
+    <p>
+    写过一些歌，多为独立摇滚，后期加入了电子元素。可以在各大音乐平台通过xmmz搜到我。 I also write songs, mostly indie rock, with electronic elements added later. You can find my work on major music platforms under “xmmz.”  
+        <a href="https://open.spotify.com/artist/2KSLzywG3mq1vxbO37yoO3" target="_blank" class="link-with-icon" style="color: #1DB954;">
+            <img src="{{ url_for('static', filename='img/icon/spotify.png') }}" alt="Spotify" class="link-icon">
+            <span><b>Spotify</b></span>    
+       </a>
+        <a href="https://music.apple.com/us/artist/xmmz/1761669624" target="_blank" class="link-with-icon" style="color: #FF4E6B;">
+            <img src="{{ url_for('static', filename='img/icon/apple music.png') }}" alt="Apple Music" class="link-icon">
+            <span><b>Apple Music</b></span>
+            </a>
     </p>
-    <p>I've worked as both a data analyst and product manager, from startup teams to companies with hundreds of millions of users.
+            
+    <p>
+        搞一些生意 Have some business:  
+        <a href="https://www.xmmz.me/store" target="_blank" class="link-with-icon" style="color: #0072B1;">
+            <img src="{{ url_for('static', filename='img/icon/funxter.png') }}" alt="FUNXTER" class="link-icon">
+            <span><b>FUNXTER</b></span>
+        </a>
     </p>
-    <p>工作这些年,title在数据分析师和数据产品经理之间切换,从创业公司小团队到亿级用户的大厂都待过。    </p>
-    <p>Grew up in Xi'an, spent time in Beijing, now based in Vancouver.    </p>
-    <p>成长在西安,独立在北京,现在在温哥华。    </p>
+    <div class="line"></div>
 
-    <p><a href="https://www.linkedin.com/in/yz-xmmz/" target="_blank" style="color: #0072B1;">LinkedIn</a></p>
-
-    <p>Some of my favorite movies are <i>Persian Lessons</i> and <i>1917</i>. Favorite books include <i>Love in the Time of Cholera</i>, the <i>Neapolitan Novels</i>, and <i>Hidden Valley Road</i>.
+    <p>
+        我出生于西安，中国的碳水天堂。这里有𰻞𰻞面、棍棍面、裤带面等上百种面食。
     </p>
-    <p>我最喜欢的电影是《波斯语课》和《1917》。最喜欢的书有《霍乱时期的爱情》、《那不勒斯四部曲》，和《隐谷路》。</p>
-
-    <p>I used to enjoy songwriting a lot, writing songs day and night, mostly about love obsession and political frustration. Some of them I produced hard and released on platforms including Spotify; you can find them by searching “xmmz.”
+    <p>
+        有秦镇米皮、宝鸡擀面皮、回民街麻酱凉皮等数十种凉皮。
     </p>
-    <p>以前很喜欢写歌，乱七八糟写了很多，题材大多是爱情的沉迷和政治的愤怒。其中有一些作品，我很认真制作了，然后发布到了包括spotify的各个平台，可以通过xmmz搜到我。</p>
-
-    <p><a href="https://open.spotify.com/artist/2KSLzywG3mq1vxbO37yoO3" target="_blank" style="color: #1DB954;">Spotify</a></p>
-    <p><a href="https://music.apple.com/us/artist/xmmz/1761669624" target="_blank" style="color: #FF4E6B;">Apple Music</a></p>
-
-    <p>I also love all kinds of racket sports. I’ve played table tennis since I was a kid, and now I play tennis.</p>
+    <p>
+        还有牛羊肉泡馍、小炒、肉夹馍等等。
     </p>
-    <p>还热爱各类挥拍类运动，从小打乒乓球，现在打网球。</p>
 
+    <p>
+        这里还是中国十三朝古都，拥有无数历史古迹和豪华陵墓，市政甚至不敢随便挖地铁，都怕惊动了几千年前的先人。
+    </p>
+    <p>
+        而对我来说，这些华丽的名号都是漂浮的。
+    </p>
+    <p>
+        西安给我的真实回忆，是每天上学都会经过的、摆满新旧电瓶车的街道，其中还夹杂着被偷来的车，脏乱、拥挤；
+    </p>
+    <p>
+        是冒着热气的早餐摊前，排着长队的菜夹馍，一个人用长筷疯狂加菜，夹的菜已经彻底溢满了馍；
+    </p>
+    <p>
+        那时候和同学说去5公里外的市中心钟楼，就感觉像出城一样。因为上述说到的原因地铁挖得晚，就只能坐几公里要停几十站的公交。
+    </p>
+    <p>
+        坐公交，就要做好挤不上去则已，挤上去内脏都濒临爆裂的准备；
+    </p>
+    <p>
+        还有那些老陕妙音——“额贼”“这四你包关咧”“司服，气阿达”“感受西安上空，夜的魅惑~~~”，在耳边此起彼伏。
+    </p>
+    <p>
+        I was born in Xi'an, China's paradise of carbohydrates. 
+    </p>
+    <p>
+        The city is home to hundreds of kinds of wheat-based noodles—biangbiang noodles, gun-gun noodles, belt noodles—
+    </p>
+    <p>
+        as well as dozens of varieties of cold noodles, such as Qinzhen rice noodles, Baoji rolled noodles, and Muslim Street sesame noodles. 
+    </p>
+    <p>
+        There are also beef and lamb soup with flatbread, stir-fries, roujiamo, and countless other specialties. 
+    </p>
+
+    <p>
+        It is also one of China's ancient capitals, having served thirteen dynasties, with countless historical sites and magnificent tombs. 
+    </p>
+    <p>
+        Even today, city planners hesitate to dig subway lines too casually, fearing they might disturb ancestors from thousands of years ago.
+    </p>
+    <p>
+        But to me, these grand titles have always felt distant and floating. 
+    </p>
+    <p>
+        My real memories of Xi'an are different. They are the streets I passed every day on my way to school, packed with old and new electric scooters, mixed with stolen ones, messy and crowded. 
+    </p>
+    <p>
+        They are the steaming breakfast stalls, where people lined up for jiaomo, while one person used long chopsticks to shovel vegetables into a bun until it was completely overflowing. 
+    </p>
+    <p>
+        Back then, telling classmates I was going to the Bell Tower, only five kilometers away, felt like announcing a trip out of town. 
+    </p>
+    <p>
+        Because subway construction started so late, buses were the only option. Routes that ran for just a few kilometers but stopped dozens of times. 
+    </p>
+    <p>
+        Taking a bus meant being prepared: either you couldn't squeeze on at all, or once you did, your internal organs felt like they were about to burst. 
+    </p>
+    <p>
+        And then there were the Shaanxi dialects: "E zei," "zhe si ni bao guan lie," "si fu, qi a da," "feel the charm of the night sky over Xi'an~~~"—echoing endlessly in my ears.
+    </p>
+    <div class="line"></div>
+    <p>
+        本科在北京读的，后来又在发展的“加速度”堪比其他地方发展的“速度”的互联网行业工作了几年。
+    </p>
+    <p>
+        不瞒您说，也着实是有一些996的经验。
+    </p>
+    <p>
+        北京是个神奇的地方。
+    </p>
+    <p>
+        那时候pm2.5好几百的雾霾持续了好几年，当我以为自己只能靠肺部自行进化来适应的时候，它突然被当作一件正经事抓起来。
+    </p>
+    <p>
+        于是pm2.5就像自由落体一样，垂直降到几十，天一下子变得蓝天白云，天高云淡。
+    </p>
+    <p>
+        在北京很多事情都是这样。那种感觉，就像是乘着一部没有护栏的直梯飞驰而上，速度快得让人心慌，也让人无处可抓，眼前的一切因此变得模糊。
+    </p>
+    <p>
+        I studied for my bachelor's degree in Beijing, and later worked for several years in the internet industry, whose "acceleration" seemed faster than other places' "speed." 
+    </p>
+    <p>
+        Honestly, I did have some 996 experience. 
+    </p>
+    <p>
+        Beijing is a magical place. 
+    </p>
+    <p>
+        At that time, PM2.5 levels had stayed in the hundreds for years . 
+    </p>
+    <p>
+        When I thought I could only rely on my lungs to evolve in order to survive, it suddenly started being taken seriously. 
+    </p>
+    <p>
+        Almost overnight, PM2.5 dropped like free fall, straight down to the tens, and the sky became clear and bright, day after day. 
+    </p>
+    <p>
+        Many things in Beijing are like this. It feels like riding an elevator without railings, shooting straight upward at terrifying speed. 
+    </p>
+    <p>
+        So fast that you become flustered, with nothing to hold on to, until everything in front of you becomes blurred.   
+    </p>
+    <div class="line"></div>
+
+    <p>
+        后来，我来到加拿大，在Kelowna读了硕士，毕业后搬到了温哥华。
+    </p>
+    <p>
+        极光、大雪、湖泊、行人的问候与微笑。
+    </p>
+    <p>
+        我逐渐明白了，生活在全球宜居度排名前十的城市是一种什么样的感觉。
+    </p>
+    <p>
+        事事都好，好到让遗憾都变得更有分量。
+    </p>
+    <p>
+        Later, I came to Canada and studied for my master's degree in Kelowna. 
+    </p>
+    <p>
+        Then I moved to Vancouver after graduation. 
+    </p>
+    <p>
+        Auroras, heavy snow, lakes, greetings and smiles from strangers. 
+    </p>
+    <p>
+        Gradually, I began to understand what it feels like to live in one of the world's top ten most livable cities. 
+    </p>
+    <p>
+        Everything is good. So good that even regrets start to carry more weight.
+    </p>
+<div class="line"></div>
     <p> <mark onclick="getUserInput()" style="cursor: pointer;">Reach me out.</mark></p>
 
 

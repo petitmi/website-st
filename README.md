@@ -8,6 +8,13 @@
 │   │   ├── __init__.py
 │   │   ├── routes.py
 │   │   ├── templates/
+│       │       └── index.html
+│       │       └── base.html
+│       │       └── blog/
+│       │       └── music/
+│       │       └── gallary/
+│       │       └── work/
+│   │   ├── content/
 │   │   └── static/
 │   │
 │   └── ecommerce/
@@ -26,12 +33,14 @@
 │       │           ├── 1_2_side.png
 │       │           ├── 2_front.png
 │       │           ├── 2_side.png
-│       │           └── ... (all 22 models)
+│       │           └── ... 
 │       │
 │       ├── src/
 │       │   ├── App.js
 │       │   ├── index.js
-│       │   └── ... (other React files)
+│       │   └── ProductList.js 
+│       │   └── ProductDetail.js 
+│       │   └── ...
 │       │
 │       ├── build/  (generated after npm run build)
 │       │   ├── index.html
