@@ -608,12 +608,12 @@ const ProductList = ({
                         variant="h5" 
                         sx={{
                           fontFamily: "'Press Start 2P', monospace",
-                          fontSize: '1.2rem',
+                          fontSize: '0.6rem',
                           color: '#00FF88',
                           textShadow: '2px 2px 0 #2D2D2D'
                         }}
                       >
-                        ${product.price}
+                        Price: {product.price}
                       </Typography>
                       <Typography 
                         variant="caption" 

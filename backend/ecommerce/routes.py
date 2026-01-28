@@ -84,7 +84,7 @@ def get_products():
             "name": product["name"],
             "price": product["price"],
             "description": product["description"],
-            "moq": product.get("moq", 50),  # Default MOQ of 50 units
+            "moq": product.get("moq", 50),  
             "imageFront": first_variant.get("imageFront", ""),
             "imageSide": first_variant.get("imageSide", ""),
             "colorway": first_variant.get("colorway"),

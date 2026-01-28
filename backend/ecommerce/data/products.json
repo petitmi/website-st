@@ -4,7 +4,8 @@
     "model": 21,
     "name": "Classic Tortoise Oval",
     "description": "Timeless oval sunglasses with tortoiseshell acetate frame.",
-    "price": 45,
+    "price": "Upon Request",
+    "moq": 20,
     "variants": [
       {
         "variety": 0,
@@ -51,7 +52,8 @@
     "model": 16,
     "name": "Retro Mirror Oval",
     "description": "Retro oval sunglasses with white frame and iridescent mirror lenses.",
-    "price": 45,
+    "price": "Upon Request",
+    "moq": 20,
     "variants": [
       {
         "variety": 1,
@@ -136,7 +138,8 @@
     "model": 2,
     "name": "Slim Metal Rectangle",
     "description": "Minimalist silver rectangular sunglasses with dark protective lenses.",
-    "price": 45,
+    "price": "Upon Request",
+    "moq": 20,
     "variants": [
       {
         "variety": 1,
@@ -297,7 +300,8 @@
     "model": 20,
     "name": "Rimless Gradient Pro",
     "description": "Sleek rimless sunglasses with warm brown gradient lenses.",
-    "price": 45,
+    "price": "Upon Request",
+    "moq": 20,
     "variants": [
       {
         "variety": 4,
@@ -458,7 +462,8 @@
     "model": 6,
     "name": "Thick White Rectangle",
     "description": "Bold rectangular sunglasses with thick white frame.",
-    "price": 45,
+    "price": "Upon Request",
+    "moq": 20,
     "variants": [
       {
         "variety": 0,
@@ -505,7 +510,8 @@
     "model": 9,
     "name": "Feminine Cat-Eye Oval",
     "description": "Sleek black cat-eye sunglasses with modern styling.",
-    "price": 45,
+    "price": "Upon Request",
+    "moq": 20,
     "variants": [
       {
         "variety": 2,
@@ -628,7 +634,8 @@
     "model": 22,
     "name": "Bold Sculpted Rectangle",
     "description": "Fashion-forward rectangular sunglasses with sculpted edges.",
-    "price": 45,
+    "price": "Upon Request",
+    "moq": 20,
     "variants": [
       {
         "variety": 0,
@@ -675,7 +682,8 @@
     "model": 14,
     "name": "Classic Rectangular Core",
     "description": "Reliable rectangular sunglasses for everyday wear.",
-    "price": 45,
+    "price": "Upon Request",
+    "moq": 20,
     "variants": [
       {
         "variety": 0,
@@ -722,7 +730,8 @@
     "model": 15,
     "name": "Playful Cat-Eye Rectangle",
     "description": "Pastel purple cat-eye rectangular sunglasses with retro charm.",
-    "price": 45,
+    "price": "Upon Request",
+    "moq": 20,
     "variants": [
       {
         "variety": 0,
@@ -769,7 +778,8 @@
     "model": 3,
     "name": "Clear Square Modern",
     "description": "Minimalist clear-frame sunglasses with gradient gray lenses.",
-    "price": 45,
+    "price": "Upon Request",
+    "moq": 20,
     "variants": [
       {
         "variety": 0,
@@ -816,7 +826,8 @@
     "model": 18,
     "name": "Sporty Matte Rectangle",
     "description": "Functional sporty sunglasses in dark olive matte finish.",
-    "price": 45,
+    "price": "Upon Request",
+    "moq": 20,
     "variants": [
       {
         "variety": 2,
@@ -901,7 +912,8 @@
     "model": 5,
     "name": "Retro Metal Oval",
     "description": "Retro-inspired oval sunglasses with black metal frame and gradient lenses.",
-    "price": 45,
+    "price": "Upon Request",
+    "moq": 20,
     "variants": [
       {
         "variety": 2,
@@ -986,7 +998,8 @@
     "model": 7,
     "name": "Elegant Metal Oval",
     "description": "Lightweight oval sunglasses with elegant gold metal frame.",
-    "price": 45,
+    "price": "Upon Request",
+    "moq": 20,
     "variants": [
       {
         "variety": 1,
@@ -1066,7 +1079,8 @@
     "model": 11,
     "name": "Retro Thick Rectangle",
     "description": "Thick retro rectangular sunglasses with polarized-style lenses.",
-    "price": 45,
+    "price": "Upon Request",
+    "moq": 20,
     "variants": [
       {
         "variety": 0,
@@ -1113,7 +1127,8 @@
     "model": 4,
     "name": "Gold Accent Retro Oval",
     "description": "Retro oval sunglasses with black frame and gold detailing.",
-    "price": 45,
+    "price": "Upon Request",
+    "moq": 20,
     "variants": [
       {
         "variety": 1,
@@ -1198,7 +1213,8 @@
     "model": 1,
     "name": "Retro Cat-Eye Classic",
     "description": "Vintage-inspired cat-eye sunglasses with matte black frame and dark gray lenses.",
-    "price": 45,
+    "price": "Upon Request",
+    "moq": 20,
     "variants": [
       {
         "variety": 2,
@@ -1283,7 +1299,8 @@
     "model": 17,
     "name": "Bold Retro Oval",
     "description": "Bold black oval sunglasses with strong retro influence.",
-    "price": 45,
+    "price": "Upon Request",
+    "moq": 20,
     "variants": [
       {
         "variety": 2,
@@ -1368,7 +1385,8 @@
     "model": 8,
     "name": "Youthful Oval Frame",
     "description": "Soft oval sunglasses with thick white frame for casual style.",
-    "price": 45,
+    "price": "Upon Request",
+    "moq": 20,
     "variants": [
       {
         "variety": 1,
@@ -1461,7 +1479,8 @@
     "model": 19,
     "name": "Sporty Rounded Rectangle",
     "description": "Vibrant red sporty sunglasses with rounded rectangular frame.",
-    "price": 45,
+    "price": "Upon Request",
+    "moq": 20,
     "variants": [
       {
         "variety": 0,
@@ -1508,7 +1527,8 @@
     "model": 13,
     "name": "Modern Translucent Square",
     "description": "Semi-transparent olive square sunglasses with modern appeal.",
-    "price": 45,
+    "price": "Upon Request",
+    "moq": 20,
     "variants": [
       {
         "variety": 0,
@@ -1555,7 +1575,8 @@
     "model": 12,
     "name": "Classic Square Daily",
     "description": "Timeless square sunglasses with subtle metal accents.",
-    "price": 45,
+    "price": "Upon Request",
+    "moq": 20,
     "variants": [
       {
         "variety": 0,
@@ -1602,7 +1623,8 @@
     "model": 10,
     "name": "Decorative Square Bold",
     "description": "Statement square sunglasses with decorative embossed details.",
-    "price": 45,
+    "price": "Upon Request",
+    "moq": 20,
     "variants": [
       {
         "variety": 0,

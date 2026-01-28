@@ -426,14 +426,14 @@ const ProductDetail = ({
                   variant="h3" 
                   sx={{
                     fontFamily: "'Press Start 2P', monospace",
-                    fontSize: '2rem',
+                    fontSize: '0.8rem',
                     color: '#00FF88',
                     textShadow: '3px 3px 0 #2D2D2D'
                   }}
                 >
-                  ${product.price}
+                  Price: {product.price}
                 </Typography>
-                <Typography 
+                {/* <Typography 
                   variant="body2" 
                   sx={{
                     color: '#00E5FF',
@@ -442,13 +442,13 @@ const ProductDetail = ({
                   }}
                 >
                   per unit
-                </Typography>
+                </Typography> */}
               </Box>
 
               {product.moq && (
                 <Box sx={{ mb: 3 }}>
                   <Chip 
-                    label={`MOQ: ${product.moq} units`} 
+                    label={`MOQ: ${product.moq}`} 
                     sx={{ 
                       bgcolor: '#7C4DFF',
                       color: 'white',
