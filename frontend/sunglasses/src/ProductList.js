@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import FlipCameraAndroidIcon from '@mui/icons-material/FlipCameraAndroid';
 import {
   AppBar,
   Toolbar,
@@ -54,8 +55,7 @@ const ProductList = ({
   const [products, setProducts] = useState([]);
   const [contactInfo, setContactInfo] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [hoveredProduct, setHoveredProduct] = useState(null);
-
+  const [isFlipped, setIsFlipped] = useState(false);
   useEffect(() => {
     fetchProducts();
     fetchContactInfo();
@@ -475,9 +475,13 @@ const ProductList = ({
                 }}
                 onClick={() => navigate(`/product/${product.id}`)}
               >
-                <Box
-                  onMouseEnter={() => setHoveredProduct(product.id)}
-                  onMouseLeave={() => setHoveredProduct(null)}
+            <Box
+                onMouseEnter={() => setIsFlipped(product.id)}   // Desktop
+                onMouseLeave={() => setIsFlipped(null)}
+                onClick={(e) => {
+                    e.stopPropagation(); // Prevent card navigation
+                    setIsFlipped(isFlipped === product.id ? null : product.id);
+                }}
                   sx={{
                     height: 240,
                     bgcolor: '#FFFFFF',
@@ -492,7 +496,7 @@ const ProductList = ({
                 >
                   <Box
                     component="img"
-                    src={hoveredProduct === product.id ? product.imageSide : product.imageFront}
+                    src={isFlipped === product.id ? product.imageSide : product.imageFront}
                     alt={product.name}
                     sx={{
                       maxHeight: '100%',
@@ -503,7 +507,26 @@ const ProductList = ({
                       imageRendering: 'auto'
                     }}
                   />
-                  {hoveredProduct === product.id && (
+                  <Box
+                    sx={{
+                        position: 'absolute',
+                        bottom: 8,
+                        right: 8,
+                        bgcolor: '#00E5FF',
+                        border: '2px solid #2D2D2D',
+                        borderRadius: '50%',
+                        p: 0.8,
+                        display: { xs: 'flex', md: 'none' },
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        boxShadow: '2px 2px 0 #7C4DFF'
+                    }}
+                    >
+                    <FlipCameraAndroidIcon
+                        sx={{ fontSize: 18, color: '#2D2D2D' }}
+                    />
+                    </Box>
+                  {isFlipped === product.id && (
                     <Box
                       sx={{
                         position: 'absolute',

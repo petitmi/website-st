@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import FlipCameraAndroidIcon from '@mui/icons-material/FlipCameraAndroid';
+
 import {
   Container,
   AppBar,
@@ -40,11 +42,11 @@ const ProductDetail = ({
   const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [selectedVariant, setSelectedVariant] = useState(null);
-  const [currentImage, setCurrentImage] = useState('front');
   const [loading, setLoading] = useState(true);
   const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
   const [contactInfo, setContactInfo] = useState(null);
-  const [isHovering, setIsHovering] = useState(false);
+  const [isFlipped, setIsFlipped] = useState(false);
+
   const formatKey = (key) => {
     return key
       .replace(/([A-Z])/g, ' $1')
@@ -276,11 +278,12 @@ const ProductDetail = ({
             >
               <Box 
                 sx={{ position: 'relative', mb: 2, bgcolor: '#FFFFFF', p: 2, border: '3px solid #7C4DFF' }}
-                onMouseEnter={() => setIsHovering(true)}
-                onMouseLeave={() => setIsHovering(false)}
+                onMouseEnter={() => setIsFlipped(true)}   // Desktop hover
+                onMouseLeave={() => setIsFlipped(false)}
+                onClick={() => setIsFlipped(prev => !prev)} // Mobile tap
               >
                 <img
-                  src={isHovering ? currentVariantData.imageSide : currentVariantData.imageFront}
+                  src={isFlipped ? currentVariantData.imageSide : currentVariantData.imageFront}
                   alt={product.name}
                   style={{
                     width: '100%',
@@ -292,7 +295,27 @@ const ProductDetail = ({
                     transition: 'all 0.3s ease'
                   }}
                 />
-                {isHovering && (
+                <Box
+                    sx={{
+                        position: 'absolute',
+                        bottom: 12,
+                        right: 12,
+                        bgcolor: '#00E5FF',
+                        border: '2px solid #2D2D2D',
+                        borderRadius: '50%',
+                        p: 1,
+                        display: { xs: 'flex', md: 'none' }, // Only show on mobile
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        boxShadow: '2px 2px 0 #7C4DFF'
+                    }}
+                    >
+                    <FlipCameraAndroidIcon
+                        sx={{ fontSize: 20, color: '#2D2D2D' }}
+                    />
+                    </Box>
+
+                {isFlipped && (
                   <Box
                     sx={{
                       position: 'absolute',
@@ -597,7 +620,6 @@ const ProductDetail = ({
                               fontSize: '1.1rem'
                             }}>
                               {formatKey(key)}:
-
                             </TableCell>
                             <TableCell sx={{ 
                               border: 0,
