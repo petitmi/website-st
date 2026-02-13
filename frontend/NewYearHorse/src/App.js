@@ -179,7 +179,7 @@ function App() {
             {/* RIGHT SIDE - Image */}
             <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl max-h-[700px] shadow-black/40 order-1 lg:order-2 group">
               <img
-                src="/horse2026.jpg"
+                src={process.env.PUBLIC_URL + "/horse2026.jpg"}
                 alt="Year of the Horse"
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
@@ -199,7 +199,7 @@ function App() {
               {/* Wish Card */}
               <div className="relative aspect-[3/4] overflow-hidden rounded-2xl shadow-2xl max-h-[700px] shadow-black/50 border border-slate-700/30">
                 <img
-                  src="/horse_card2.jpg"
+                  src={process.env.PUBLIC_URL + "/horse_card2.jpg"}
                   alt="Year of the Horse"
                   className="absolute inset-0 w-full h-full object-cover"
                 />
