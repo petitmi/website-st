@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Sparkles, Share2, RotateCcw, Zap, RefreshCw } from "lucide-react";
 import horseJokes from "./horsejoke.json";
+import predictions from "./prediction.json";
 
 function App() {
   const [name, setName] = useState("");
@@ -16,41 +17,32 @@ function App() {
     "Monkey", "Rooster", "Dog", "Pig"
   ];
 
-  const zodiacPredictions = {
-    Rat: "Those born in the Year of the Rat clash with the Grand Duke (Tai Sui) in the Year of the Horse. This indicates possible changes in career, residence, and relationships. However, change does not necessarily mean good or bad — face it bravely and you will manage well. In particular, during the 5th and 11th lunar months, take extra care to avoid physical injuries. High-risk activities such as skiing, water sports, and horseback riding should be avoided if possible.",
-    Ox: "People born in the Year of the Ox enjoy favorable career luck in the Year of the Horse. There may be promotions, increased authority, or beneficial job changes. Helpful mentors or benefactors may appear in the workplace, but you should still pay attention to interpersonal relationships.",
-    Tiger: "Those born in the Year of the Tiger form a harmonious combination with Tai Sui in the Year of the Horse. Overall relationships and collaborations are positive, and new partnership opportunities may arise. Although minor gossip or obstacles may occasionally appear, your efforts will ultimately bring good results and financial rewards.",
-    Rabbit: "People born in the Year of the Rabbit receive the “Heavenly Happiness Peach Blossom” star — a positive romance star. Singles may meet someone suitable for a relationship. Those married or in stable relationships can convert this romantic energy into improved social connections that enhance work performance.",
-    Dragon: "Those born in the Year of the Dragon have good career luck with opportunities for advancement, and benefactors may help during difficulties. However, they are prone to accidental injuries in the Year of the Horse, so high-risk activities like skiing, water sports, and horseback riding should be reduced or avoided.",
-    Snake: "People born in the Year of the Snake enjoy favorable financial luck and may encounter new career opportunities. It is recommended to boldly try new things and directions. Minor health issues may occur more frequently, so strengthening physical fitness is advised to stay ready for challenges.",
-    Horse: "Those born in the Year of the Horse experience their Ben Ming Nian (zodiac year / offending Tai Sui). With the support of two auspicious stars, career and wealth luck remain good. However, pay special attention to physical injuries and emotional fluctuations. During the 5th and 11th lunar months, actions such as dental cleaning, blood donation, or medical checkups may help reduce negative effects.",
-    Goat: "People born in the Year of the Goat are in harmony with Tai Sui. Relationships, collaborations, and support from helpful people are all favorable, and there will be opportunities to perform well at work. Take advantage of the good fortune this year to build a strong foundation for the coming years.",
-    Monkey: "For those born in the Year of the Monkey, the Year of the Horse activates the Traveling Horse star. This represents travel, business trips, studying abroad, relocation, or migration. Visiting different places is beneficial this year. With the support of the Academic (Wenchang) star, luck in learning, exams, reputation, and academic pursuits also improves.",
-    Rooster: "People born in the Year of the Rooster receive the Red Matchmaker romance star, a positive love star. Singles may meet a potential partner. Those already in stable relationships may move toward marriage. Married individuals can turn this romantic energy into improved social relations that benefit career performance.",
-    Dog: "Those born in the Year of the Dog form a harmonious combination with Tai Sui. Relationships and partnerships are favorable, new collaborations may appear, and there may be promotions or authority increases at work. Financial rewards will be satisfactory after hard work.",
-    Pig: "PPeople born in the Year of the Pig have decent financial luck. Although expenses may also be high, overall gains remain positive. Avoid lending money to friends or business partners. Career development is also supported by helpful benefactors."
-  };
-
-  const wishesBySign = {
-    Rat: "Embrace the changes ahead — every shift this year opens a new path toward growth and wisdom.",
-    Ox: "Your dedication brings recognition — step forward confidently toward promotion and success.",
-    Tiger: "Strong alliances and steady effort will reward you with prosperity and achievement.",
-    Rabbit: "Love and harmony surround you — meaningful connections will brighten both life and work.",
-    Dragon: "Progress is within reach — with support around you, obstacles will turn into opportunities.",
-    Snake: "New opportunities appear — dare to explore new directions and wealth will follow.",
-    Horse: "Your year shines brightly — fortune rises as long as you stay balanced in body and mind.",
-    Goat: "Supportive people guide your way — build your future on this year’s strong foundation.",
-    Monkey: "Movement brings luck — travel, learning, and exploration will open fortunate doors.",
-    Rooster: "Romance and joyful connections flourish — happiness grows in both love and career.",
-    Dog: "Partnerships bring rewards — your hard work will return with status and financial gain.",
-    Pig: "Steady gains arrive — manage wisely and your efforts will turn into lasting abundance."
-  };
+// Convert JSON array into lookup maps
+    const zodiacPredictions = Object.fromEntries(
+        predictions
+        .filter(p => p.sign) // ignore empty row in json
+        .map(p => [
+            p.sign,
+            {
+            status: p.status,
+            summary: p.summary,
+            prediction: p.prediction
+            }
+        ])
+    );
+    
+  const wishesBySign = Object.fromEntries(
+    predictions
+      .filter(p => p.sign)
+      .map(p => [p.sign, p.wish])
+  );
+  
   
 
   const handleSubmit = () => {
     if (!name.trim() || !sign) return;
 
-    const randomWish  = wishesBySign[sign];
+    const randomWish  = wishesBySign[sign]  || "Wishing you fortune and happiness this year!";
     const randomJokeObj = horseJokes[Math.floor(Math.random() * horseJokes.length)];
     const randomJoke = `${randomJokeObj.question}"\n"${randomJokeObj.answer}`;
 
@@ -75,7 +67,10 @@ function App() {
   };
 
   const handleShare = async () => {
-    const text = `Happy Year of the Horse!\n\n${currentWish}\n\nZodiac Insight (${sign}): ${zodiacPredictions[sign]}\n\n${currentJoke}`;
+    const text = `Happy Year of the Horse!\n\n${currentWish}\n\nZodiac Insight (${sign})
+    Status: ${zodiacPredictions[sign].status}
+    Summary: ${zodiacPredictions[sign].summary}
+    Prediction: ${zodiacPredictions[sign].prediction}\n\n${currentJoke}`;
     if (navigator.share) {
       try {
         await navigator.share({ text });
@@ -243,9 +238,19 @@ function App() {
                     </h3>
                   </div>
 
-                  <p className="text-slate-200 text-base leading-relaxed">
-                    {zodiacPredictions[sign]}
-                  </p>
+                  <div className="space-y-3 text-left">
+                    <p className="text-amber-400 font-semibold">
+                        {zodiacPredictions[sign].status}
+                    </p>
+
+                    <p className="text-slate-300 italic">
+                        {zodiacPredictions[sign].summary}
+                    </p>
+
+                    <p className="text-slate-200 leading-relaxed">
+                        {zodiacPredictions[sign].prediction}
+                    </p>
+                    </div>
                   
                   <div className="mt-5 pt-5 border-t border-slate-700/50">
                     <p className="text-amber-500/80 text-sm">Year of the Horse 2026</p>
