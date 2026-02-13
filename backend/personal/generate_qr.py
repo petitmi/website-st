@@ -1,7 +1,7 @@
 import qrcode
 
 # Basic QR code
-url = "https://xmmz.me"
+url = "https://xmmz.me/store"
 qr = qrcode.QRCode(
     version=1,
     error_correction=qrcode.constants.ERROR_CORRECT_L,
@@ -12,5 +12,5 @@ qr.add_data(url)
 qr.make(fit=True)
 
 img = qr.make_image(fill_color="black", back_color="white")
-img.save("../xmmz_qr.png")
+img.save("/Users/petitmi/petitmiweb/website-st/backend/personal/xmmz_qr.png")
 print("QR code saved as xmmz_qr.png")

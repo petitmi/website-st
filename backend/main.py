@@ -6,12 +6,15 @@ import os
 
 def create_app():
     # Get the backend directory path
-    backend_dir = os.path.dirname(os.path.abspath(__file__))
-    
-    app = Flask(__name__,
-                template_folder=os.path.join(backend_dir, "personal/templates"),
-                static_folder=os.path.join(backend_dir, "personal/static")) 
-    
+    BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+    PROJECT_ROOT = os.path.abspath(os.path.join(BASE_DIR, ".."))
+
+    app = Flask(
+        __name__,
+        template_folder=os.path.join(BASE_DIR, "personal/templates"),
+        static_folder=os.path.join(BASE_DIR, "personal/static")
+    )
+
     @app.route('/debug-static')
     def debug_static():
         import os
@@ -32,16 +35,28 @@ def create_app():
     app.register_blueprint(ecommerce_bp, url_prefix='/api')
 
     # Define react build path
-    react_build = os.path.join(os.path.dirname(__file__), "..", "frontend", "sunglasses", "build")
-
+    sunglasses_build = os.path.join(PROJECT_ROOT, "frontend", "sunglasses", "build")
+    horse_build = os.path.join(PROJECT_ROOT, "frontend", "NewYearHorse", "build")
     @app.route("/store", defaults={"path": ""})
     @app.route("/store/<path:path>")
     def serve_store(path):
         # If path exists and is a file, serve it
-        file_path = os.path.join(react_build, path)
+        file_path = os.path.join(sunglasses_build, path)
         if path and os.path.isfile(file_path):
-            return send_from_directory(react_build, path)
+            return send_from_directory(sunglasses_build, path)
         # Otherwise serve index.html
-        return send_from_directory(react_build, "index.html")
+        return send_from_directory(sunglasses_build, "index.html")
+    
 
-    return app
+    @app.route('/new-year-horse', defaults={'path': ''})
+    @app.route('/new-year-horse/<path:path>')
+    def serve_horse(path):
+
+        file_path = os.path.join(horse_build, path)
+
+        # If requesting a real file -> return file
+        if path and os.path.exists(file_path) and not os.path.isdir(file_path):
+            return send_from_directory(horse_build, path)
+
+        # Otherwise return React app
+        return send_from_directory(horse_build, 'index.html')

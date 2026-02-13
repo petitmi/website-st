@@ -1,7 +1,4 @@
 from backend.main import create_app
-from flask_mail import Mail
-from backend.ecommerce.routes import init_mail
-import os
 
 app = create_app()
 
