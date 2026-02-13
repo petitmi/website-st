@@ -2,6 +2,7 @@
   "name": "new-year-horse",
   "version": "1.0.0",
   "description": "New Year of the Horse celebration app",
+  "homepage": "/new-year-horse",
   "private": true,
   "dependencies": {
     "react": "^18.2.0",
